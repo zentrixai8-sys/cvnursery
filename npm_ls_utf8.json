@@ -1,0 +1,1604 @@
+﻿{
+  "version": "0.0.1",
+  "name": "@figma/my-make-file",
+  "problems": [
+    "invalid: react-dom@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react-dom",
+    "invalid: react@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react"
+  ],
+  "dependencies": {
+    "@emotion/react": {
+      "version": "11.14.0",
+      "resolved": "https://registry.npmjs.org/@emotion/react/-/react-11.14.0.tgz",
+      "overridden": false,
+      "dependencies": {
+        "@emotion/use-insertion-effect-with-fallbacks": {
+          "version": "1.2.0",
+          "resolved": "https://registry.npmjs.org/@emotion/use-insertion-effect-with-fallbacks/-/use-insertion-effect-with-fallbacks-1.2.0.tgz",
+          "overridden": false,
+          "dependencies": {
+            "react": {
+              "version": "18.3.1",
+              "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber",
+              "problems": [
+                "invalid: react@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react"
+              ]
+            }
+          }
+        },
+        "react": {
+          "version": "18.3.1"
+        }
+      }
+    },
+    "@emotion/styled": {
+      "version": "11.14.1",
+      "resolved": "https://registry.npmjs.org/@emotion/styled/-/styled-11.14.1.tgz",
+      "overridden": false,
+      "dependencies": {
+        "react": {
+          "version": "18.3.1"
+        }
+      }
+    },
+    "@mui/icons-material": {
+      "version": "7.3.5",
+      "resolved": "https://registry.npmjs.org/@mui/icons-material/-/icons-material-7.3.5.tgz",
+      "overridden": false,
+      "dependencies": {
+        "react": {
+          "version": "18.3.1"
+        }
+      }
+    },
+    "@mui/material": {
+      "version": "7.3.5",
+      "resolved": "https://registry.npmjs.org/@mui/material/-/material-7.3.5.tgz",
+      "overridden": false,
+      "dependencies": {
+        "@mui/system": {
+          "version": "7.3.9",
+          "resolved": "https://registry.npmjs.org/@mui/system/-/system-7.3.9.tgz",
+          "overridden": false,
+          "dependencies": {
+            "@mui/private-theming": {
+              "version": "7.3.9",
+              "resolved": "https://registry.npmjs.org/@mui/private-theming/-/private-theming-7.3.9.tgz",
+              "overridden": false,
+              "dependencies": {
+                "react": {
+                  "version": "18.3.1",
+                  "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber, \"^19.0.0\" from node_modules/its-fine",
+                  "problems": [
+                    "invalid: react@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react"
+                  ]
+                }
+              }
+            },
+            "@mui/styled-engine": {
+              "version": "7.3.9",
+              "resolved": "https://registry.npmjs.org/@mui/styled-engine/-/styled-engine-7.3.9.tgz",
+              "overridden": false,
+              "dependencies": {
+                "react": {
+                  "version": "18.3.1",
+                  "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber, \"^19.0.0\" from node_modules/its-fine",
+                  "problems": [
+                    "invalid: react@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react"
+                  ]
+                }
+              }
+            },
+            "react": {
+              "version": "18.3.1",
+              "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber",
+              "problems": [
+                "invalid: react@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react"
+              ]
+            }
+          }
+        },
+        "@mui/utils": {
+          "version": "7.3.9",
+          "resolved": "https://registry.npmjs.org/@mui/utils/-/utils-7.3.9.tgz",
+          "overridden": false,
+          "dependencies": {
+            "react": {
+              "version": "18.3.1",
+              "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber",
+              "problems": [
+                "invalid: react@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react"
+              ]
+            }
+          }
+        },
+        "react-dom": {
+          "version": "18.3.1"
+        },
+        "react-transition-group": {
+          "version": "4.4.5",
+          "resolved": "https://registry.npmjs.org/react-transition-group/-/react-transition-group-4.4.5.tgz",
+          "overridden": false,
+          "dependencies": {
+            "react-dom": {
+              "version": "18.3.1",
+              "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber",
+              "problems": [
+                "invalid: react-dom@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react-dom"
+              ]
+            },
+            "react": {
+              "version": "18.3.1",
+              "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber",
+              "problems": [
+                "invalid: react@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react"
+              ]
+            }
+          }
+        },
+        "react": {
+          "version": "18.3.1"
+        }
+      }
+    },
+    "@radix-ui/react-accordion": {
+      "version": "1.2.3",
+      "resolved": "https://registry.npmjs.org/@radix-ui/react-accordion/-/react-accordion-1.2.3.tgz",
+      "overridden": false,
+      "dependencies": {
+        "@radix-ui/react-collection": {
+          "version": "1.1.2",
+          "resolved": "https://registry.npmjs.org/@radix-ui/react-collection/-/react-collection-1.1.2.tgz",
+          "overridden": false,
+          "dependencies": {
+            "react-dom": {
+              "version": "18.3.1",
+              "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber",
+              "problems": [
+                "invalid: react-dom@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react-dom"
+              ]
+            },
+            "react": {
+              "version": "18.3.1",
+              "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber",
+              "problems": [
+                "invalid: react@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react"
+              ]
+            }
+          }
+        },
+        "@radix-ui/react-compose-refs": {
+          "version": "1.1.1",
+          "resolved": "https://registry.npmjs.org/@radix-ui/react-compose-refs/-/react-compose-refs-1.1.1.tgz",
+          "overridden": false,
+          "dependencies": {
+            "react": {
+              "version": "18.3.1",
+              "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber",
+              "problems": [
+                "invalid: react@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react"
+              ]
+            }
+          }
+        },
+        "@radix-ui/react-context": {
+          "version": "1.1.1",
+          "resolved": "https://registry.npmjs.org/@radix-ui/react-context/-/react-context-1.1.1.tgz",
+          "overridden": false,
+          "dependencies": {
+            "react": {
+              "version": "18.3.1",
+              "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber",
+              "problems": [
+                "invalid: react@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react"
+              ]
+            }
+          }
+        },
+        "@radix-ui/react-direction": {
+          "version": "1.1.0",
+          "resolved": "https://registry.npmjs.org/@radix-ui/react-direction/-/react-direction-1.1.0.tgz",
+          "overridden": false,
+          "dependencies": {
+            "react": {
+              "version": "18.3.1",
+              "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber",
+              "problems": [
+                "invalid: react@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react"
+              ]
+            }
+          }
+        },
+        "@radix-ui/react-id": {
+          "version": "1.1.0",
+          "resolved": "https://registry.npmjs.org/@radix-ui/react-id/-/react-id-1.1.0.tgz",
+          "overridden": false,
+          "dependencies": {
+            "react": {
+              "version": "18.3.1",
+              "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber",
+              "problems": [
+                "invalid: react@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react"
+              ]
+            }
+          }
+        },
+        "@radix-ui/react-primitive": {
+          "version": "2.0.2",
+          "resolved": "https://registry.npmjs.org/@radix-ui/react-primitive/-/react-primitive-2.0.2.tgz",
+          "overridden": false,
+          "dependencies": {
+            "react-dom": {
+              "version": "18.3.1",
+              "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber",
+              "problems": [
+                "invalid: react-dom@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react-dom"
+              ]
+            },
+            "react": {
+              "version": "18.3.1",
+              "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber",
+              "problems": [
+                "invalid: react@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react"
+              ]
+            }
+          }
+        },
+        "@radix-ui/react-use-controllable-state": {
+          "version": "1.1.0",
+          "resolved": "https://registry.npmjs.org/@radix-ui/react-use-controllable-state/-/react-use-controllable-state-1.1.0.tgz",
+          "overridden": false,
+          "dependencies": {
+            "react": {
+              "version": "18.3.1",
+              "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber",
+              "problems": [
+                "invalid: react@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react"
+              ]
+            }
+          }
+        },
+        "react-dom": {
+          "version": "18.3.1"
+        },
+        "react": {
+          "version": "18.3.1"
+        }
+      }
+    },
+    "@radix-ui/react-alert-dialog": {
+      "version": "1.1.6",
+      "resolved": "https://registry.npmjs.org/@radix-ui/react-alert-dialog/-/react-alert-dialog-1.1.6.tgz",
+      "overridden": false,
+      "dependencies": {
+        "react-dom": {
+          "version": "18.3.1"
+        },
+        "react": {
+          "version": "18.3.1"
+        }
+      }
+    },
+    "@radix-ui/react-aspect-ratio": {
+      "version": "1.1.2",
+      "resolved": "https://registry.npmjs.org/@radix-ui/react-aspect-ratio/-/react-aspect-ratio-1.1.2.tgz",
+      "overridden": false,
+      "dependencies": {
+        "react-dom": {
+          "version": "18.3.1"
+        },
+        "react": {
+          "version": "18.3.1"
+        }
+      }
+    },
+    "@radix-ui/react-avatar": {
+      "version": "1.1.3",
+      "resolved": "https://registry.npmjs.org/@radix-ui/react-avatar/-/react-avatar-1.1.3.tgz",
+      "overridden": false,
+      "dependencies": {
+        "@radix-ui/react-use-callback-ref": {
+          "version": "1.1.0",
+          "resolved": "https://registry.npmjs.org/@radix-ui/react-use-callback-ref/-/react-use-callback-ref-1.1.0.tgz",
+          "overridden": false,
+          "dependencies": {
+            "react": {
+              "version": "18.3.1",
+              "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber",
+              "problems": [
+                "invalid: react@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react"
+              ]
+            }
+          }
+        },
+        "@radix-ui/react-use-layout-effect": {
+          "version": "1.1.0",
+          "resolved": "https://registry.npmjs.org/@radix-ui/react-use-layout-effect/-/react-use-layout-effect-1.1.0.tgz",
+          "overridden": false,
+          "dependencies": {
+            "react": {
+              "version": "18.3.1",
+              "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber",
+              "problems": [
+                "invalid: react@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react"
+              ]
+            }
+          }
+        },
+        "react-dom": {
+          "version": "18.3.1"
+        },
+        "react": {
+          "version": "18.3.1"
+        }
+      }
+    },
+    "@radix-ui/react-checkbox": {
+      "version": "1.1.4",
+      "resolved": "https://registry.npmjs.org/@radix-ui/react-checkbox/-/react-checkbox-1.1.4.tgz",
+      "overridden": false,
+      "dependencies": {
+        "@radix-ui/react-presence": {
+          "version": "1.1.2",
+          "resolved": "https://registry.npmjs.org/@radix-ui/react-presence/-/react-presence-1.1.2.tgz",
+          "overridden": false,
+          "dependencies": {
+            "react-dom": {
+              "version": "18.3.1",
+              "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber",
+              "problems": [
+                "invalid: react-dom@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react-dom"
+              ]
+            },
+            "react": {
+              "version": "18.3.1",
+              "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber",
+              "problems": [
+                "invalid: react@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react"
+              ]
+            }
+          }
+        },
+        "@radix-ui/react-use-previous": {
+          "version": "1.1.0",
+          "resolved": "https://registry.npmjs.org/@radix-ui/react-use-previous/-/react-use-previous-1.1.0.tgz",
+          "overridden": false,
+          "dependencies": {
+            "react": {
+              "version": "18.3.1",
+              "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber",
+              "problems": [
+                "invalid: react@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react"
+              ]
+            }
+          }
+        },
+        "@radix-ui/react-use-size": {
+          "version": "1.1.0",
+          "resolved": "https://registry.npmjs.org/@radix-ui/react-use-size/-/react-use-size-1.1.0.tgz",
+          "overridden": false,
+          "dependencies": {
+            "react": {
+              "version": "18.3.1",
+              "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber",
+              "problems": [
+                "invalid: react@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react"
+              ]
+            }
+          }
+        },
+        "react-dom": {
+          "version": "18.3.1"
+        },
+        "react": {
+          "version": "18.3.1"
+        }
+      }
+    },
+    "@radix-ui/react-collapsible": {
+      "version": "1.1.3",
+      "resolved": "https://registry.npmjs.org/@radix-ui/react-collapsible/-/react-collapsible-1.1.3.tgz",
+      "overridden": false,
+      "dependencies": {
+        "react-dom": {
+          "version": "18.3.1"
+        },
+        "react": {
+          "version": "18.3.1"
+        }
+      }
+    },
+    "@radix-ui/react-context-menu": {
+      "version": "2.2.6",
+      "resolved": "https://registry.npmjs.org/@radix-ui/react-context-menu/-/react-context-menu-2.2.6.tgz",
+      "overridden": false,
+      "dependencies": {
+        "@radix-ui/react-menu": {
+          "version": "2.1.6",
+          "resolved": "https://registry.npmjs.org/@radix-ui/react-menu/-/react-menu-2.1.6.tgz",
+          "overridden": false,
+          "dependencies": {
+            "react-dom": {
+              "version": "18.3.1",
+              "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber",
+              "problems": [
+                "invalid: react-dom@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react-dom"
+              ]
+            },
+            "react": {
+              "version": "18.3.1",
+              "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber",
+              "problems": [
+                "invalid: react@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react"
+              ]
+            }
+          }
+        },
+        "react-dom": {
+          "version": "18.3.1"
+        },
+        "react": {
+          "version": "18.3.1"
+        }
+      }
+    },
+    "@radix-ui/react-dialog": {
+      "version": "1.1.6",
+      "resolved": "https://registry.npmjs.org/@radix-ui/react-dialog/-/react-dialog-1.1.6.tgz",
+      "overridden": false,
+      "dependencies": {
+        "@radix-ui/react-dismissable-layer": {
+          "version": "1.1.5",
+          "resolved": "https://registry.npmjs.org/@radix-ui/react-dismissable-layer/-/react-dismissable-layer-1.1.5.tgz",
+          "overridden": false,
+          "dependencies": {
+            "@radix-ui/react-use-escape-keydown": {
+              "version": "1.1.0",
+              "resolved": "https://registry.npmjs.org/@radix-ui/react-use-escape-keydown/-/react-use-escape-keydown-1.1.0.tgz",
+              "overridden": false,
+              "dependencies": {
+                "react": {
+                  "version": "18.3.1",
+                  "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber, \"^19.0.0\" from node_modules/its-fine",
+                  "problems": [
+                    "invalid: react@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react"
+                  ]
+                }
+              }
+            },
+            "react-dom": {
+              "version": "18.3.1",
+              "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber",
+              "problems": [
+                "invalid: react-dom@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react-dom"
+              ]
+            },
+            "react": {
+              "version": "18.3.1",
+              "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber",
+              "problems": [
+                "invalid: react@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react"
+              ]
+            }
+          }
+        },
+        "@radix-ui/react-focus-guards": {
+          "version": "1.1.1",
+          "resolved": "https://registry.npmjs.org/@radix-ui/react-focus-guards/-/react-focus-guards-1.1.1.tgz",
+          "overridden": false,
+          "dependencies": {
+            "react": {
+              "version": "18.3.1",
+              "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber",
+              "problems": [
+                "invalid: react@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react"
+              ]
+            }
+          }
+        },
+        "@radix-ui/react-focus-scope": {
+          "version": "1.1.2",
+          "resolved": "https://registry.npmjs.org/@radix-ui/react-focus-scope/-/react-focus-scope-1.1.2.tgz",
+          "overridden": false,
+          "dependencies": {
+            "react-dom": {
+              "version": "18.3.1",
+              "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber",
+              "problems": [
+                "invalid: react-dom@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react-dom"
+              ]
+            },
+            "react": {
+              "version": "18.3.1",
+              "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber",
+              "problems": [
+                "invalid: react@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react"
+              ]
+            }
+          }
+        },
+        "@radix-ui/react-portal": {
+          "version": "1.1.4",
+          "resolved": "https://registry.npmjs.org/@radix-ui/react-portal/-/react-portal-1.1.4.tgz",
+          "overridden": false,
+          "dependencies": {
+            "react-dom": {
+              "version": "18.3.1",
+              "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber",
+              "problems": [
+                "invalid: react-dom@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react-dom"
+              ]
+            },
+            "react": {
+              "version": "18.3.1",
+              "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber",
+              "problems": [
+                "invalid: react@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react"
+              ]
+            }
+          }
+        },
+        "react-dom": {
+          "version": "18.3.1"
+        },
+        "react-remove-scroll": {
+          "version": "2.7.2",
+          "resolved": "https://registry.npmjs.org/react-remove-scroll/-/react-remove-scroll-2.7.2.tgz",
+          "overridden": false,
+          "dependencies": {
+            "react-remove-scroll-bar": {
+              "version": "2.3.8",
+              "resolved": "https://registry.npmjs.org/react-remove-scroll-bar/-/react-remove-scroll-bar-2.3.8.tgz",
+              "overridden": false,
+              "dependencies": {
+                "react": {
+                  "version": "18.3.1",
+                  "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber, \"^19.0.0\" from node_modules/its-fine",
+                  "problems": [
+                    "invalid: react@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react"
+                  ]
+                }
+              }
+            },
+            "react-style-singleton": {
+              "version": "2.2.3",
+              "resolved": "https://registry.npmjs.org/react-style-singleton/-/react-style-singleton-2.2.3.tgz",
+              "overridden": false,
+              "dependencies": {
+                "react": {
+                  "version": "18.3.1",
+                  "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber, \"^19.0.0\" from node_modules/its-fine",
+                  "problems": [
+                    "invalid: react@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react"
+                  ]
+                }
+              }
+            },
+            "react": {
+              "version": "18.3.1",
+              "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber",
+              "problems": [
+                "invalid: react@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react"
+              ]
+            },
+            "use-callback-ref": {
+              "version": "1.3.3",
+              "resolved": "https://registry.npmjs.org/use-callback-ref/-/use-callback-ref-1.3.3.tgz",
+              "overridden": false,
+              "dependencies": {
+                "react": {
+                  "version": "18.3.1",
+                  "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber, \"^19.0.0\" from node_modules/its-fine",
+                  "problems": [
+                    "invalid: react@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react"
+                  ]
+                }
+              }
+            },
+            "use-sidecar": {
+              "version": "1.1.3",
+              "resolved": "https://registry.npmjs.org/use-sidecar/-/use-sidecar-1.1.3.tgz",
+              "overridden": false,
+              "dependencies": {
+                "react": {
+                  "version": "18.3.1",
+                  "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber, \"^19.0.0\" from node_modules/its-fine",
+                  "problems": [
+                    "invalid: react@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "react": {
+          "version": "18.3.1"
+        }
+      }
+    },
+    "@radix-ui/react-dropdown-menu": {
+      "version": "2.1.6",
+      "resolved": "https://registry.npmjs.org/@radix-ui/react-dropdown-menu/-/react-dropdown-menu-2.1.6.tgz",
+      "overridden": false,
+      "dependencies": {
+        "react-dom": {
+          "version": "18.3.1"
+        },
+        "react": {
+          "version": "18.3.1"
+        }
+      }
+    },
+    "@radix-ui/react-hover-card": {
+      "version": "1.1.6",
+      "resolved": "https://registry.npmjs.org/@radix-ui/react-hover-card/-/react-hover-card-1.1.6.tgz",
+      "overridden": false,
+      "dependencies": {
+        "@radix-ui/react-popper": {
+          "version": "1.2.2",
+          "resolved": "https://registry.npmjs.org/@radix-ui/react-popper/-/react-popper-1.2.2.tgz",
+          "overridden": false,
+          "dependencies": {
+            "@floating-ui/react-dom": {
+              "version": "2.1.8",
+              "resolved": "https://registry.npmjs.org/@floating-ui/react-dom/-/react-dom-2.1.8.tgz",
+              "overridden": false,
+              "dependencies": {
+                "react-dom": {
+                  "version": "18.3.1",
+                  "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber",
+                  "problems": [
+                    "invalid: react-dom@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react-dom"
+                  ]
+                },
+                "react": {
+                  "version": "18.3.1",
+                  "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber, \"^19.0.0\" from node_modules/its-fine",
+                  "problems": [
+                    "invalid: react@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react"
+                  ]
+                }
+              }
+            },
+            "@radix-ui/react-arrow": {
+              "version": "1.1.2",
+              "resolved": "https://registry.npmjs.org/@radix-ui/react-arrow/-/react-arrow-1.1.2.tgz",
+              "overridden": false,
+              "dependencies": {
+                "react-dom": {
+                  "version": "18.3.1",
+                  "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber",
+                  "problems": [
+                    "invalid: react-dom@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react-dom"
+                  ]
+                },
+                "react": {
+                  "version": "18.3.1",
+                  "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber, \"^19.0.0\" from node_modules/its-fine",
+                  "problems": [
+                    "invalid: react@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react"
+                  ]
+                }
+              }
+            },
+            "@radix-ui/react-use-rect": {
+              "version": "1.1.0",
+              "resolved": "https://registry.npmjs.org/@radix-ui/react-use-rect/-/react-use-rect-1.1.0.tgz",
+              "overridden": false,
+              "dependencies": {
+                "react": {
+                  "version": "18.3.1",
+                  "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber, \"^19.0.0\" from node_modules/its-fine",
+                  "problems": [
+                    "invalid: react@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react"
+                  ]
+                }
+              }
+            },
+            "react-dom": {
+              "version": "18.3.1",
+              "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber",
+              "problems": [
+                "invalid: react-dom@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react-dom"
+              ]
+            },
+            "react": {
+              "version": "18.3.1",
+              "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber",
+              "problems": [
+                "invalid: react@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react"
+              ]
+            }
+          }
+        },
+        "react-dom": {
+          "version": "18.3.1"
+        },
+        "react": {
+          "version": "18.3.1"
+        }
+      }
+    },
+    "@radix-ui/react-label": {
+      "version": "2.1.2",
+      "resolved": "https://registry.npmjs.org/@radix-ui/react-label/-/react-label-2.1.2.tgz",
+      "overridden": false,
+      "dependencies": {
+        "react-dom": {
+          "version": "18.3.1"
+        },
+        "react": {
+          "version": "18.3.1"
+        }
+      }
+    },
+    "@radix-ui/react-menubar": {
+      "version": "1.1.6",
+      "resolved": "https://registry.npmjs.org/@radix-ui/react-menubar/-/react-menubar-1.1.6.tgz",
+      "overridden": false,
+      "dependencies": {
+        "@radix-ui/react-roving-focus": {
+          "version": "1.1.2",
+          "resolved": "https://registry.npmjs.org/@radix-ui/react-roving-focus/-/react-roving-focus-1.1.2.tgz",
+          "overridden": false,
+          "dependencies": {
+            "react-dom": {
+              "version": "18.3.1",
+              "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber",
+              "problems": [
+                "invalid: react-dom@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react-dom"
+              ]
+            },
+            "react": {
+              "version": "18.3.1",
+              "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber",
+              "problems": [
+                "invalid: react@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react"
+              ]
+            }
+          }
+        },
+        "react-dom": {
+          "version": "18.3.1"
+        },
+        "react": {
+          "version": "18.3.1"
+        }
+      }
+    },
+    "@radix-ui/react-navigation-menu": {
+      "version": "1.2.5",
+      "resolved": "https://registry.npmjs.org/@radix-ui/react-navigation-menu/-/react-navigation-menu-1.2.5.tgz",
+      "overridden": false,
+      "dependencies": {
+        "@radix-ui/react-visually-hidden": {
+          "version": "1.1.2",
+          "resolved": "https://registry.npmjs.org/@radix-ui/react-visually-hidden/-/react-visually-hidden-1.1.2.tgz",
+          "overridden": false,
+          "dependencies": {
+            "react-dom": {
+              "version": "18.3.1",
+              "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber",
+              "problems": [
+                "invalid: react-dom@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react-dom"
+              ]
+            },
+            "react": {
+              "version": "18.3.1",
+              "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber",
+              "problems": [
+                "invalid: react@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react"
+              ]
+            }
+          }
+        },
+        "react-dom": {
+          "version": "18.3.1"
+        },
+        "react": {
+          "version": "18.3.1"
+        }
+      }
+    },
+    "@radix-ui/react-popover": {
+      "version": "1.1.6",
+      "resolved": "https://registry.npmjs.org/@radix-ui/react-popover/-/react-popover-1.1.6.tgz",
+      "overridden": false,
+      "dependencies": {
+        "react-dom": {
+          "version": "18.3.1"
+        },
+        "react": {
+          "version": "18.3.1"
+        }
+      }
+    },
+    "@radix-ui/react-progress": {
+      "version": "1.1.2",
+      "resolved": "https://registry.npmjs.org/@radix-ui/react-progress/-/react-progress-1.1.2.tgz",
+      "overridden": false,
+      "dependencies": {
+        "react-dom": {
+          "version": "18.3.1"
+        },
+        "react": {
+          "version": "18.3.1"
+        }
+      }
+    },
+    "@radix-ui/react-radio-group": {
+      "version": "1.2.3",
+      "resolved": "https://registry.npmjs.org/@radix-ui/react-radio-group/-/react-radio-group-1.2.3.tgz",
+      "overridden": false,
+      "dependencies": {
+        "react-dom": {
+          "version": "18.3.1"
+        },
+        "react": {
+          "version": "18.3.1"
+        }
+      }
+    },
+    "@radix-ui/react-scroll-area": {
+      "version": "1.2.3",
+      "resolved": "https://registry.npmjs.org/@radix-ui/react-scroll-area/-/react-scroll-area-1.2.3.tgz",
+      "overridden": false,
+      "dependencies": {
+        "react-dom": {
+          "version": "18.3.1"
+        },
+        "react": {
+          "version": "18.3.1"
+        }
+      }
+    },
+    "@radix-ui/react-select": {
+      "version": "2.1.6",
+      "resolved": "https://registry.npmjs.org/@radix-ui/react-select/-/react-select-2.1.6.tgz",
+      "overridden": false,
+      "dependencies": {
+        "react-dom": {
+          "version": "18.3.1"
+        },
+        "react": {
+          "version": "18.3.1"
+        }
+      }
+    },
+    "@radix-ui/react-separator": {
+      "version": "1.1.2",
+      "resolved": "https://registry.npmjs.org/@radix-ui/react-separator/-/react-separator-1.1.2.tgz",
+      "overridden": false,
+      "dependencies": {
+        "react-dom": {
+          "version": "18.3.1"
+        },
+        "react": {
+          "version": "18.3.1"
+        }
+      }
+    },
+    "@radix-ui/react-slider": {
+      "version": "1.2.3",
+      "resolved": "https://registry.npmjs.org/@radix-ui/react-slider/-/react-slider-1.2.3.tgz",
+      "overridden": false,
+      "dependencies": {
+        "react-dom": {
+          "version": "18.3.1"
+        },
+        "react": {
+          "version": "18.3.1"
+        }
+      }
+    },
+    "@radix-ui/react-slot": {
+      "version": "1.1.2",
+      "resolved": "https://registry.npmjs.org/@radix-ui/react-slot/-/react-slot-1.1.2.tgz",
+      "overridden": false,
+      "dependencies": {
+        "react": {
+          "version": "18.3.1"
+        }
+      }
+    },
+    "@radix-ui/react-switch": {
+      "version": "1.1.3",
+      "resolved": "https://registry.npmjs.org/@radix-ui/react-switch/-/react-switch-1.1.3.tgz",
+      "overridden": false,
+      "dependencies": {
+        "react-dom": {
+          "version": "18.3.1"
+        },
+        "react": {
+          "version": "18.3.1"
+        }
+      }
+    },
+    "@radix-ui/react-tabs": {
+      "version": "1.1.3",
+      "resolved": "https://registry.npmjs.org/@radix-ui/react-tabs/-/react-tabs-1.1.3.tgz",
+      "overridden": false,
+      "dependencies": {
+        "react-dom": {
+          "version": "18.3.1"
+        },
+        "react": {
+          "version": "18.3.1"
+        }
+      }
+    },
+    "@radix-ui/react-toggle-group": {
+      "version": "1.1.2",
+      "resolved": "https://registry.npmjs.org/@radix-ui/react-toggle-group/-/react-toggle-group-1.1.2.tgz",
+      "overridden": false,
+      "dependencies": {
+        "react-dom": {
+          "version": "18.3.1"
+        },
+        "react": {
+          "version": "18.3.1"
+        }
+      }
+    },
+    "@radix-ui/react-toggle": {
+      "version": "1.1.2",
+      "resolved": "https://registry.npmjs.org/@radix-ui/react-toggle/-/react-toggle-1.1.2.tgz",
+      "overridden": false,
+      "dependencies": {
+        "react-dom": {
+          "version": "18.3.1"
+        },
+        "react": {
+          "version": "18.3.1"
+        }
+      }
+    },
+    "@radix-ui/react-tooltip": {
+      "version": "1.1.8",
+      "resolved": "https://registry.npmjs.org/@radix-ui/react-tooltip/-/react-tooltip-1.1.8.tgz",
+      "overridden": false,
+      "dependencies": {
+        "react-dom": {
+          "version": "18.3.1"
+        },
+        "react": {
+          "version": "18.3.1"
+        }
+      }
+    },
+    "@react-three/drei": {
+      "version": "10.7.7",
+      "resolved": "https://registry.npmjs.org/@react-three/drei/-/drei-10.7.7.tgz",
+      "overridden": false,
+      "dependencies": {
+        "@monogrid/gainmap-js": {
+          "version": "3.4.0",
+          "resolved": "https://registry.npmjs.org/@monogrid/gainmap-js/-/gainmap-js-3.4.0.tgz",
+          "overridden": false,
+          "dependencies": {
+            "three": {
+              "version": "0.183.2"
+            }
+          }
+        },
+        "@react-three/fiber": {
+          "version": "9.5.0"
+        },
+        "@use-gesture/react": {
+          "version": "10.3.1",
+          "resolved": "https://registry.npmjs.org/@use-gesture/react/-/react-10.3.1.tgz",
+          "overridden": false,
+          "dependencies": {
+            "react": {
+              "version": "18.3.1",
+              "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber",
+              "problems": [
+                "invalid: react@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react"
+              ]
+            }
+          }
+        },
+        "camera-controls": {
+          "version": "3.1.2",
+          "resolved": "https://registry.npmjs.org/camera-controls/-/camera-controls-3.1.2.tgz",
+          "overridden": false,
+          "dependencies": {
+            "three": {
+              "version": "0.183.2"
+            }
+          }
+        },
+        "maath": {
+          "version": "0.10.8",
+          "resolved": "https://registry.npmjs.org/maath/-/maath-0.10.8.tgz",
+          "overridden": false,
+          "dependencies": {
+            "three": {
+              "version": "0.183.2"
+            }
+          }
+        },
+        "meshline": {
+          "version": "3.3.1",
+          "resolved": "https://registry.npmjs.org/meshline/-/meshline-3.3.1.tgz",
+          "overridden": false,
+          "dependencies": {
+            "three": {
+              "version": "0.183.2"
+            }
+          }
+        },
+        "react-dom": {
+          "version": "18.3.1",
+          "invalid": "\"^19\" from node_modules/@react-three/drei",
+          "problems": [
+            "invalid: react-dom@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react-dom"
+          ]
+        },
+        "react": {
+          "version": "18.3.1",
+          "invalid": "\"^19\" from node_modules/@react-three/drei",
+          "problems": [
+            "invalid: react@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react"
+          ]
+        },
+        "stats-gl": {
+          "version": "2.4.2",
+          "resolved": "https://registry.npmjs.org/stats-gl/-/stats-gl-2.4.2.tgz",
+          "overridden": false,
+          "dependencies": {
+            "three": {
+              "version": "0.170.0",
+              "resolved": "https://registry.npmjs.org/three/-/three-0.170.0.tgz",
+              "overridden": false
+            }
+          }
+        },
+        "suspend-react": {
+          "version": "0.1.3",
+          "resolved": "https://registry.npmjs.org/suspend-react/-/suspend-react-0.1.3.tgz",
+          "overridden": false,
+          "dependencies": {
+            "react": {
+              "version": "18.3.1",
+              "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber",
+              "problems": [
+                "invalid: react@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react"
+              ]
+            }
+          }
+        },
+        "three-mesh-bvh": {
+          "version": "0.8.3",
+          "resolved": "https://registry.npmjs.org/three-mesh-bvh/-/three-mesh-bvh-0.8.3.tgz",
+          "overridden": false,
+          "dependencies": {
+            "three": {
+              "version": "0.183.2"
+            }
+          }
+        },
+        "three-stdlib": {
+          "version": "2.36.1",
+          "resolved": "https://registry.npmjs.org/three-stdlib/-/three-stdlib-2.36.1.tgz",
+          "overridden": false,
+          "dependencies": {
+            "three": {
+              "version": "0.183.2"
+            }
+          }
+        },
+        "three": {
+          "version": "0.183.2"
+        },
+        "troika-three-text": {
+          "version": "0.52.4",
+          "resolved": "https://registry.npmjs.org/troika-three-text/-/troika-three-text-0.52.4.tgz",
+          "overridden": false,
+          "dependencies": {
+            "three": {
+              "version": "0.183.2"
+            },
+            "troika-three-utils": {
+              "version": "0.52.4",
+              "resolved": "https://registry.npmjs.org/troika-three-utils/-/troika-three-utils-0.52.4.tgz",
+              "overridden": false,
+              "dependencies": {
+                "three": {
+                  "version": "0.183.2"
+                }
+              }
+            }
+          }
+        },
+        "tunnel-rat": {
+          "version": "0.1.2",
+          "resolved": "https://registry.npmjs.org/tunnel-rat/-/tunnel-rat-0.1.2.tgz",
+          "overridden": false,
+          "dependencies": {
+            "zustand": {
+              "version": "4.5.7",
+              "resolved": "https://registry.npmjs.org/zustand/-/zustand-4.5.7.tgz",
+              "overridden": false,
+              "dependencies": {
+                "react": {
+                  "version": "18.3.1",
+                  "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber, \"^19.0.0\" from node_modules/its-fine",
+                  "problems": [
+                    "invalid: react@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "use-sync-external-store": {
+          "version": "1.6.0",
+          "resolved": "https://registry.npmjs.org/use-sync-external-store/-/use-sync-external-store-1.6.0.tgz",
+          "overridden": false,
+          "dependencies": {
+            "react": {
+              "version": "18.3.1",
+              "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber",
+              "problems": [
+                "invalid: react@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react"
+              ]
+            }
+          }
+        },
+        "zustand": {
+          "version": "5.0.11",
+          "resolved": "https://registry.npmjs.org/zustand/-/zustand-5.0.11.tgz",
+          "overridden": false,
+          "dependencies": {
+            "react": {
+              "version": "18.3.1",
+              "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber",
+              "problems": [
+                "invalid: react@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "@react-three/fiber": {
+      "version": "9.5.0",
+      "resolved": "https://registry.npmjs.org/@react-three/fiber/-/fiber-9.5.0.tgz",
+      "overridden": false,
+      "dependencies": {
+        "its-fine": {
+          "version": "2.0.0",
+          "resolved": "https://registry.npmjs.org/its-fine/-/its-fine-2.0.0.tgz",
+          "overridden": false,
+          "dependencies": {
+            "react": {
+              "version": "18.3.1",
+              "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber, \"^19.0.0\" from node_modules/its-fine",
+              "problems": [
+                "invalid: react@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react"
+              ]
+            }
+          }
+        },
+        "react-dom": {
+          "version": "18.3.1",
+          "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber",
+          "problems": [
+            "invalid: react-dom@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react-dom"
+          ]
+        },
+        "react-use-measure": {
+          "version": "2.1.7",
+          "resolved": "https://registry.npmjs.org/react-use-measure/-/react-use-measure-2.1.7.tgz",
+          "overridden": false,
+          "dependencies": {
+            "react-dom": {
+              "version": "18.3.1",
+              "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber",
+              "problems": [
+                "invalid: react-dom@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react-dom"
+              ]
+            },
+            "react": {
+              "version": "18.3.1",
+              "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber, \"^19.0.0\" from node_modules/its-fine",
+              "problems": [
+                "invalid: react@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react"
+              ]
+            }
+          }
+        },
+        "react": {
+          "version": "18.3.1",
+          "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber",
+          "problems": [
+            "invalid: react@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react"
+          ]
+        },
+        "three": {
+          "version": "0.183.2"
+        }
+      }
+    },
+    "cmdk": {
+      "version": "1.1.1",
+      "resolved": "https://registry.npmjs.org/cmdk/-/cmdk-1.1.1.tgz",
+      "overridden": false,
+      "dependencies": {
+        "react-dom": {
+          "version": "18.3.1",
+          "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber",
+          "problems": [
+            "invalid: react-dom@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react-dom"
+          ]
+        },
+        "react": {
+          "version": "18.3.1",
+          "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber",
+          "problems": [
+            "invalid: react@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react"
+          ]
+        }
+      }
+    },
+    "embla-carousel-react": {
+      "version": "8.6.0",
+      "resolved": "https://registry.npmjs.org/embla-carousel-react/-/embla-carousel-react-8.6.0.tgz",
+      "overridden": false,
+      "dependencies": {
+        "react": {
+          "version": "18.3.1",
+          "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber",
+          "problems": [
+            "invalid: react@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react"
+          ]
+        }
+      }
+    },
+    "input-otp": {
+      "version": "1.4.2",
+      "resolved": "https://registry.npmjs.org/input-otp/-/input-otp-1.4.2.tgz",
+      "overridden": false,
+      "dependencies": {
+        "react-dom": {
+          "version": "18.3.1",
+          "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber",
+          "problems": [
+            "invalid: react-dom@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react-dom"
+          ]
+        },
+        "react": {
+          "version": "18.3.1",
+          "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber",
+          "problems": [
+            "invalid: react@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react"
+          ]
+        }
+      }
+    },
+    "lucide-react": {
+      "version": "0.487.0",
+      "resolved": "https://registry.npmjs.org/lucide-react/-/lucide-react-0.487.0.tgz",
+      "overridden": false,
+      "dependencies": {
+        "react": {
+          "version": "18.3.1",
+          "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber",
+          "problems": [
+            "invalid: react@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react"
+          ]
+        }
+      }
+    },
+    "motion": {
+      "version": "12.23.24",
+      "resolved": "https://registry.npmjs.org/motion/-/motion-12.23.24.tgz",
+      "overridden": false,
+      "dependencies": {
+        "framer-motion": {
+          "version": "12.36.0",
+          "resolved": "https://registry.npmjs.org/framer-motion/-/framer-motion-12.36.0.tgz",
+          "overridden": false,
+          "dependencies": {
+            "react-dom": {
+              "version": "18.3.1",
+              "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber",
+              "problems": [
+                "invalid: react-dom@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react-dom"
+              ]
+            },
+            "react": {
+              "version": "18.3.1",
+              "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber, \"^19.0.0\" from node_modules/its-fine",
+              "problems": [
+                "invalid: react@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react"
+              ]
+            }
+          }
+        },
+        "react-dom": {
+          "version": "18.3.1",
+          "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber",
+          "problems": [
+            "invalid: react-dom@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react-dom"
+          ]
+        },
+        "react": {
+          "version": "18.3.1",
+          "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber",
+          "problems": [
+            "invalid: react@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react"
+          ]
+        }
+      }
+    },
+    "next-themes": {
+      "version": "0.4.6",
+      "resolved": "https://registry.npmjs.org/next-themes/-/next-themes-0.4.6.tgz",
+      "overridden": false,
+      "dependencies": {
+        "react-dom": {
+          "version": "18.3.1",
+          "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber",
+          "problems": [
+            "invalid: react-dom@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react-dom"
+          ]
+        },
+        "react": {
+          "version": "18.3.1",
+          "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber",
+          "problems": [
+            "invalid: react@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react"
+          ]
+        }
+      }
+    },
+    "react-day-picker": {
+      "version": "8.10.1",
+      "resolved": "https://registry.npmjs.org/react-day-picker/-/react-day-picker-8.10.1.tgz",
+      "overridden": false,
+      "dependencies": {
+        "react": {
+          "version": "18.3.1",
+          "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber",
+          "problems": [
+            "invalid: react@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react"
+          ]
+        }
+      }
+    },
+    "react-dnd": {
+      "version": "16.0.1",
+      "resolved": "https://registry.npmjs.org/react-dnd/-/react-dnd-16.0.1.tgz",
+      "overridden": false,
+      "dependencies": {
+        "react": {
+          "version": "18.3.1",
+          "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber",
+          "problems": [
+            "invalid: react@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react"
+          ]
+        }
+      }
+    },
+    "react-dom": {
+      "version": "18.3.1",
+      "resolved": "https://registry.npmjs.org/react-dom/-/react-dom-18.3.1.tgz",
+      "overridden": false,
+      "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber",
+      "problems": [
+        "invalid: react-dom@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react-dom"
+      ],
+      "dependencies": {
+        "react": {
+          "version": "18.3.1",
+          "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber",
+          "problems": [
+            "invalid: react@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react"
+          ]
+        }
+      }
+    },
+    "react-hook-form": {
+      "version": "7.55.0",
+      "resolved": "https://registry.npmjs.org/react-hook-form/-/react-hook-form-7.55.0.tgz",
+      "overridden": false,
+      "dependencies": {
+        "react": {
+          "version": "18.3.1",
+          "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber",
+          "problems": [
+            "invalid: react@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react"
+          ]
+        }
+      }
+    },
+    "react-popper": {
+      "version": "2.3.0",
+      "resolved": "https://registry.npmjs.org/react-popper/-/react-popper-2.3.0.tgz",
+      "overridden": false,
+      "dependencies": {
+        "react-dom": {
+          "version": "18.3.1",
+          "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber",
+          "problems": [
+            "invalid: react-dom@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react-dom"
+          ]
+        },
+        "react": {
+          "version": "18.3.1",
+          "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber",
+          "problems": [
+            "invalid: react@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react"
+          ]
+        }
+      }
+    },
+    "react-resizable-panels": {
+      "version": "2.1.7",
+      "resolved": "https://registry.npmjs.org/react-resizable-panels/-/react-resizable-panels-2.1.7.tgz",
+      "overridden": false,
+      "dependencies": {
+        "react-dom": {
+          "version": "18.3.1",
+          "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber",
+          "problems": [
+            "invalid: react-dom@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react-dom"
+          ]
+        },
+        "react": {
+          "version": "18.3.1",
+          "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber",
+          "problems": [
+            "invalid: react@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react"
+          ]
+        }
+      }
+    },
+    "react-router": {
+      "version": "7.13.0",
+      "resolved": "https://registry.npmjs.org/react-router/-/react-router-7.13.0.tgz",
+      "overridden": false,
+      "dependencies": {
+        "react-dom": {
+          "version": "18.3.1",
+          "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber",
+          "problems": [
+            "invalid: react-dom@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react-dom"
+          ]
+        },
+        "react": {
+          "version": "18.3.1",
+          "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber",
+          "problems": [
+            "invalid: react@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react"
+          ]
+        }
+      }
+    },
+    "react-slick": {
+      "version": "0.31.0",
+      "resolved": "https://registry.npmjs.org/react-slick/-/react-slick-0.31.0.tgz",
+      "overridden": false,
+      "dependencies": {
+        "react-dom": {
+          "version": "18.3.1",
+          "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber",
+          "problems": [
+            "invalid: react-dom@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react-dom"
+          ]
+        },
+        "react": {
+          "version": "18.3.1",
+          "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber",
+          "problems": [
+            "invalid: react@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react"
+          ]
+        }
+      }
+    },
+    "react": {
+      "version": "18.3.1",
+      "resolved": "https://registry.npmjs.org/react/-/react-18.3.1.tgz",
+      "overridden": false,
+      "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber",
+      "problems": [
+        "invalid: react@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react"
+      ]
+    },
+    "recharts": {
+      "version": "2.15.2",
+      "resolved": "https://registry.npmjs.org/recharts/-/recharts-2.15.2.tgz",
+      "overridden": false,
+      "dependencies": {
+        "react-dom": {
+          "version": "18.3.1",
+          "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber",
+          "problems": [
+            "invalid: react-dom@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react-dom"
+          ]
+        },
+        "react-smooth": {
+          "version": "4.0.4",
+          "resolved": "https://registry.npmjs.org/react-smooth/-/react-smooth-4.0.4.tgz",
+          "overridden": false,
+          "dependencies": {
+            "react-dom": {
+              "version": "18.3.1",
+              "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber",
+              "problems": [
+                "invalid: react-dom@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react-dom"
+              ]
+            },
+            "react": {
+              "version": "18.3.1",
+              "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber, \"^19.0.0\" from node_modules/its-fine",
+              "problems": [
+                "invalid: react@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react"
+              ]
+            }
+          }
+        },
+        "react": {
+          "version": "18.3.1",
+          "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber",
+          "problems": [
+            "invalid: react@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react"
+          ]
+        }
+      }
+    },
+    "sonner": {
+      "version": "2.0.3",
+      "resolved": "https://registry.npmjs.org/sonner/-/sonner-2.0.3.tgz",
+      "overridden": false,
+      "dependencies": {
+        "react-dom": {
+          "version": "18.3.1",
+          "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber",
+          "problems": [
+            "invalid: react-dom@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react-dom"
+          ]
+        },
+        "react": {
+          "version": "18.3.1",
+          "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber",
+          "problems": [
+            "invalid: react@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react"
+          ]
+        }
+      }
+    },
+    "three": {
+      "version": "0.183.2",
+      "resolved": "https://registry.npmjs.org/three/-/three-0.183.2.tgz",
+      "overridden": false
+    },
+    "vaul": {
+      "version": "1.1.2",
+      "resolved": "https://registry.npmjs.org/vaul/-/vaul-1.1.2.tgz",
+      "overridden": false,
+      "dependencies": {
+        "react-dom": {
+          "version": "18.3.1",
+          "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber",
+          "problems": [
+            "invalid: react-dom@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react-dom"
+          ]
+        },
+        "react": {
+          "version": "18.3.1",
+          "invalid": "\"^19\" from node_modules/@react-three/drei, \">=19 <19.3\" from node_modules/@react-three/fiber",
+          "problems": [
+            "invalid: react@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react"
+          ]
+        }
+      }
+    }
+  },
+  "error": {
+    "code": "ELSPROBLEMS",
+    "summary": "invalid: react-dom@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react-dom\ninvalid: react@18.3.1 D:\\E-commerce Website UI Design\\node_modules\\react",
+    "detail": ""
+  }
+}
