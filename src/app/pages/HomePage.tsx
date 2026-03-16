@@ -12,6 +12,7 @@ import { supabase } from '../../lib/supabase';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Float, Environment, ContactShadows, PresentationControls } from '@react-three/drei';
 import * as THREE from 'three';
+import { ErrorBoundary } from '../components/ErrorBoundary';
 
 // ------------------------------------------------------------
 // 3D Component: Abstract Glass Plant
@@ -282,9 +283,13 @@ export function HomePage() {
                 Click & Drag to Rotate
               </div>
               
-              <Canvas camera={{ position: [0, 2, 8], fov: 45 }} className="cursor-grab active:cursor-grabbing drop-shadow-2xl">
-                <Scene />
-              </Canvas>
+              <div className="absolute inset-0 z-0">
+                <ErrorBoundary>
+                  <Canvas camera={{ position: [0, 2, 8], fov: 45 }} className="cursor-grab active:cursor-grabbing drop-shadow-2xl">
+                    <Scene />
+                  </Canvas>
+                </ErrorBoundary>
+              </div>
             </motion.div>
           </div>
         </div>

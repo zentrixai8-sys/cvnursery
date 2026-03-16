@@ -4,117 +4,9 @@ import { Link, useNavigate } from 'react-router';
 import { Leaf, Mail, Lock, Eye, EyeOff } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 
-// 3D Imports
-import { Canvas, useFrame } from '@react-three/fiber';
-import { Float, Environment, ContactShadows, PresentationControls } from '@react-three/drei';
-import * as THREE from 'three';
+import { ErrorBoundary } from '../components/ErrorBoundary';
 
-// ------------------------------------------------------------
-// 3D Component: Abstract Glass Plant
-// ------------------------------------------------------------
-function AbstractPlant() {
-  const group = useRef<THREE.Group>(null);
-  
-  // Animate Entry
-  useFrame((state, delta) => {
-    if (group.current) {
-      group.current.scale.lerp(new THREE.Vector3(1, 1, 1), 0.04);
-      group.current.rotation.y += delta * 0.1;
-    }
-  });
-
-  return (
-    <group ref={group} scale={[0, 0, 0]} position={[0, -1.5, 0]}>
-      {/* Modern Cylinder Pot */}
-      <mesh position={[0, 0.5, 0]} castShadow receiveShadow>
-        <cylinderGeometry args={[0.8, 0.6, 1, 32]} />
-        <meshPhysicalMaterial 
-          color="#f4f7f4" 
-          roughness={0.2}
-          metalness={0.1}
-          clearcoat={1}
-        />
-      </mesh>
-      
-      {/* Dirt plane */}
-      <mesh position={[0, 1.01, 0]} receiveShadow>
-        <cylinderGeometry args={[0.78, 0.78, 0.02, 32]} />
-        <meshStandardMaterial color="#2c1a0e" roughness={0.9} />
-      </mesh>
-
-      {/* Main Stem */}
-      <mesh position={[0, 2.5, 0]} castShadow>
-        <cylinderGeometry args={[0.08, 0.12, 3, 16]} />
-        <meshPhysicalMaterial color="#0f764a" roughness={0.4} />
-      </mesh>
-
-      {/* Abstract Leaves (Glass Morphism) */}
-      {[
-        { pos: [0.5, 2.0, 0.5], rot: [0.2, 0.5, -0.6], scale: [1, 0.05, 1.5] },
-        { pos: [-0.6, 2.8, 0.2], rot: [0.3, -0.8, 0.5], scale: [1.2, 0.05, 1.8] },
-        { pos: [0.2, 3.5, -0.6], rot: [-0.4, -0.2, -0.7], scale: [0.9, 0.05, 1.4] },
-        { pos: [-0.4, 1.5, -0.5], rot: [-0.5, 0.6, 0.4], scale: [0.8, 0.05, 1.2] },
-        { pos: [0.7, 3.8, 0.1], rot: [0.5, 0.1, -0.4], scale: [0.7, 0.05, 1.1] },
-      ].map((leaf, i) => (
-        <mesh 
-          key={i} 
-          position={leaf.pos as [number, number, number]} 
-          rotation={leaf.rot as [number, number, number]} 
-          scale={leaf.scale as [number, number, number]}
-          castShadow
-        >
-          <sphereGeometry args={[1, 32, 32]} />
-          <meshPhysicalMaterial 
-            color="#10b981" 
-            transmission={0.9} // Glass effect
-            opacity={1}
-            transparent
-            metalness={0.1}
-            roughness={0.1}
-            ior={1.5}
-            thickness={0.5}
-          />
-        </mesh>
-      ))}
-
-      {/* Floating Magic Orbs */}
-      {[
-        { pos: [1.5, 3.0, 1.0], color: "#34d399", size: 0.1 },
-        { pos: [-1.2, 4.0, -1.0], color: "#10b981", size: 0.15 },
-        { pos: [0.5, 4.5, 0.8], color: "#6ee7b7", size: 0.08 },
-      ].map((orb, i) => (
-        <mesh key={i} position={orb.pos as [number, number, number]}>
-          <sphereGeometry args={[orb.size, 16, 16]} />
-          <meshBasicMaterial color={orb.color} />
-        </mesh>
-      ))}
-    </group>
-  );
-}
-
-function Scene() {
-  return (
-    <>
-      <ambientLight intensity={0.5} />
-      <spotLight position={[10, 15, 10]} intensity={2.5} penumbra={1} castShadow />
-      <PresentationControls
-        global
-        config={{ mass: 1, tension: 170, friction: 26 }}
-        snap={{ mass: 2, tension: 150, friction: 20 }}
-        rotation={[0, -Math.PI / 4, 0]}
-        polar={[-Math.PI / 6, Math.PI / 6]}
-        azimuth={[-Math.PI / 2, Math.PI / 2]}
-      >
-        <Float speed={2} rotationIntensity={0.5} floatIntensity={1.5}>
-          <AbstractPlant />
-        </Float>
-      </PresentationControls>
-      <ContactShadows position={[0, -1.5, 0]} opacity={0.4} scale={10} blur={2.5} far={4} />
-      <Environment preset="city" />
-    </>
-  );
-}
-// ------------------------------------------------------------
+// Background removed for performance
 
 
 export function LoginPage() {
@@ -131,18 +23,21 @@ export function LoginPage() {
     const success = await login(email, password);
     setIsLoading(false);
     if (success) {
-      navigate('/dashboard');
+      if (email === 'zentrix.ai8@gmail.com') {
+        navigate('/admin');
+      } else {
+        navigate('/dashboard');
+      }
     }
   };
 
   return (
     <div className="min-h-screen flex items-center justify-center p-4 relative overflow-hidden bg-gray-50">
       
-      {/* 3D Interactive Background */}
-      <div className="absolute inset-0 z-0 select-none">
-        <Canvas camera={{ position: [0, 2, 9], fov: 40 }} className="cursor-grab active:cursor-grabbing opacity-90">
-          <Scene />
-        </Canvas>
+      {/* Static Background instead of 3D Canvas */}
+      <div className="absolute inset-0 z-0 select-none overflow-hidden flex items-center justify-center opacity-30">
+         <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-emerald-300/40 rounded-full blur-[120px] mix-blend-multiply pointer-events-none" />
+         <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-teal-400/30 rounded-full blur-[100px] mix-blend-multiply pointer-events-none" />
       </div>
 
       <div className="absolute inset-0 z-0 bg-gradient-to-br from-white/30 via-emerald-50/20 to-teal-50/20 mix-blend-overlay pointer-events-none" />
