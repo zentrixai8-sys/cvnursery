@@ -1,5 +1,6 @@
 import { motion, useScroll, useTransform } from 'motion/react';
 import { Link } from 'react-router';
+import { ScrollCanvas } from '../components/ScrollCanvas';
 import { ArrowRight, Leaf, Truck, Shield, HeadphonesIcon, Star, RefreshCw, Tag } from 'lucide-react';
 import { ProductCard } from '../components/ProductCard';
 import { fetchProducts, reviews } from '../data/products';
@@ -8,125 +9,30 @@ import { toast } from 'sonner';
 import { Product, useApp } from '../context/AppContext';
 import { supabase } from '../../lib/supabase';
 
-// 3D Imports
-import { Canvas, useFrame } from '@react-three/fiber';
-import { Float, Environment, ContactShadows, PresentationControls } from '@react-three/drei';
-import * as THREE from 'three';
-import { ErrorBoundary } from '../components/ErrorBoundary';
-
-// ------------------------------------------------------------
-// 3D Component: Abstract Glass Plant
-// ------------------------------------------------------------
-function AbstractPlant() {
-  const group = useRef<THREE.Group>(null);
-  
-  // Animate Entry
-  useFrame((state, delta) => {
-    if (group.current) {
-      group.current.scale.lerp(new THREE.Vector3(1, 1, 1), 0.04);
-      group.current.rotation.y += delta * 0.1;
-    }
+export function HomePage() {
+  const heroRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end end"],
   });
 
-  return (
-    <group ref={group} scale={[0, 0, 0]} position={[0, -1.5, 0]}>
-      {/* Modern Cylinder Pot */}
-      <mesh position={[0, 0.5, 0]} castShadow receiveShadow>
-        <cylinderGeometry args={[0.8, 0.6, 1, 32]} />
-        <meshPhysicalMaterial 
-          color="#f4f7f4" 
-          roughness={0.2}
-          metalness={0.1}
-          clearcoat={1}
-        />
-      </mesh>
-      
-      {/* Dirt plane */}
-      <mesh position={[0, 1.01, 0]} receiveShadow>
-        <cylinderGeometry args={[0.78, 0.78, 0.02, 32]} />
-        <meshStandardMaterial color="#2c1a0e" roughness={0.9} />
-      </mesh>
+  // Story text animations mapped to scrollYProgress
+  const opacity1 = useTransform(scrollYProgress, [0, 0.05, 0.15], [1, 1, 0]);
+  const y1 = useTransform(scrollYProgress, [0, 0.15], [0, -50]);
 
-      {/* Main Stem */}
-      <mesh position={[0, 2.5, 0]} castShadow>
-        <cylinderGeometry args={[0.08, 0.12, 3, 16]} />
-        <meshPhysicalMaterial color="#0f764a" roughness={0.4} />
-      </mesh>
+  const opacity2 = useTransform(scrollYProgress, [0.15, 0.25, 0.35, 0.45], [0, 1, 1, 0]);
+  const y2 = useTransform(scrollYProgress, [0.15, 0.35], [50, -50]);
 
-      {/* Abstract Leaves (Glass Morphism) */}
-      {[
-        { pos: [0.5, 2.0, 0.5], rot: [0.2, 0.5, -0.6], scale: [1, 0.05, 1.5] },
-        { pos: [-0.6, 2.8, 0.2], rot: [0.3, -0.8, 0.5], scale: [1.2, 0.05, 1.8] },
-        { pos: [0.2, 3.5, -0.6], rot: [-0.4, -0.2, -0.7], scale: [0.9, 0.05, 1.4] },
-        { pos: [-0.4, 1.5, -0.5], rot: [-0.5, 0.6, 0.4], scale: [0.8, 0.05, 1.2] },
-        { pos: [0.7, 3.8, 0.1], rot: [0.5, 0.1, -0.4], scale: [0.7, 0.05, 1.1] },
-      ].map((leaf, i) => (
-        <mesh 
-          key={i} 
-          position={leaf.pos as [number, number, number]} 
-          rotation={leaf.rot as [number, number, number]} 
-          scale={leaf.scale as [number, number, number]}
-          castShadow
-        >
-          <sphereGeometry args={[1, 32, 32]} />
-          <meshPhysicalMaterial 
-            color="#10b981" 
-            transmission={0.9} // Glass effect
-            opacity={1}
-            transparent
-            metalness={0.1}
-            roughness={0.1}
-            ior={1.5}
-            thickness={0.5}
-          />
-        </mesh>
-      ))}
+  const opacity3 = useTransform(scrollYProgress, [0.45, 0.6, 0.7, 0.8], [0, 1, 1, 0]);
+  const y3 = useTransform(scrollYProgress, [0.45, 0.7], [50, -50]);
 
-      {/* Floating Magic Orbs */}
-      {[
-        { pos: [1.5, 3.0, 1.0], color: "#34d399", size: 0.1 },
-        { pos: [-1.2, 4.0, -1.0], color: "#10b981", size: 0.15 },
-        { pos: [0.5, 4.5, 0.8], color: "#6ee7b7", size: 0.08 },
-      ].map((orb, i) => (
-        <mesh key={i} position={orb.pos as [number, number, number]}>
-          <sphereGeometry args={[orb.size, 16, 16]} />
-          <meshBasicMaterial color={orb.color} />
-        </mesh>
-      ))}
-    </group>
-  );
-}
+  const opacity4 = useTransform(scrollYProgress, [0.8, 0.9, 1], [0, 1, 1]);
+  const y4 = useTransform(scrollYProgress, [0.8, 1], [50, 0]);
 
-function Scene() {
-  return (
-    <>
-      <ambientLight intensity={0.5} />
-      <spotLight position={[10, 15, 10]} intensity={2.5} penumbra={1} castShadow />
-      <PresentationControls
-        global
-        config={{ mass: 1, tension: 170, friction: 26 }}
-        snap={{ mass: 2, tension: 150, friction: 20 }}
-        rotation={[0, -Math.PI / 4, 0]}
-        polar={[-Math.PI / 6, Math.PI / 6]}
-        azimuth={[-Math.PI / 2, Math.PI / 2]}
-      >
-        <Float speed={2} rotationIntensity={0.5} floatIntensity={1.5}>
-          <AbstractPlant />
-        </Float>
-      </PresentationControls>
-      <ContactShadows position={[0, -1.5, 0]} opacity={0.4} scale={10} blur={2.5} far={4} />
-      <Environment preset="city" />
-    </>
-  );
-}
-// ------------------------------------------------------------
-
-
-export function HomePage() {
+  // Original state and logic
   const [email, setEmail] = useState('');
   const [allProducts, setAllProducts] = useState<Product[]>([]);
   
-  // App context and admin check
   const { user } = useApp();
   const isAdmin = user?.email === 'zentrix.ai8@gmail.com';
 
@@ -177,7 +83,7 @@ export function HomePage() {
   };
 
   return (
-    <div className="bg-[#fbfcfa] min-h-screen overflow-hidden selection:bg-emerald-200">
+    <div className="bg-[#fbfcfa] min-h-screen selection:bg-emerald-200">
       
       {/* Admin Floating Button */}
       {isAdmin && (
@@ -198,105 +104,93 @@ export function HomePage() {
         </motion.div>
       )}
 
-      {/* Next-Gen Hero Section with 3D Canvas */}
-      <section className="relative min-h-screen flex items-center pt-20">
-        {/* Subtle dynamic background gradient */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(167,243,208,0.3),transparent_40%),radial-gradient(circle_at_bottom_left,rgba(254,240,138,0.3),transparent_40%)]" />
+      {/* --- SCROLLYTELLING HERO SECTION --- */}
+      <div ref={heroRef} className="relative h-[400vh] bg-[#EEF2EC]">
+        {/* Sticky Canvas */}
+        <ScrollCanvas frameCount={80} scrollProgress={scrollYProgress} />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            
-            {/* Left Content */}
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1, ease: 'easeOut', staggerChildren: 0.2 }}
-            >
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 }}
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 mb-8 mt-12 lg:mt-0"
-              >
-                <Leaf className="w-5 h-5 text-emerald-500" />
-                <span className="font-bold tracking-wide uppercase text-sm">Welcome to CV Nursery</span>
-              </motion.div>
-
-              <motion.h1 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4 }}
-                className="text-6xl md:text-8xl font-black text-gray-900 mb-6 leading-[1.05] tracking-tight"
-              >
-                Nature's <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-green-600">
-                  Masterpiece.
-                </span>
-              </motion.h1>
-
-              <motion.p 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.6 }}
-                className="text-xl md:text-2xl text-gray-600 mb-10 max-w-xl font-light tracking-wide leading-relaxed"
-              >
-                Immerse your living space in tranquility. We deliver meticulously grown, premium plants directly to your door.
-              </motion.p>
-
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.8 }}
-                className="flex flex-col sm:flex-row gap-5"
-              >
-                <Link to="/shop">
-                  <motion.button
-                    whileHover={{ scale: 1.05, boxShadow: "0 10px 40px rgba(16,185,129,0.3)" }}
-                    whileTap={{ scale: 0.95 }}
-                    className="w-full sm:w-auto px-10 py-5 bg-gradient-to-r from-emerald-500 to-green-600 text-white rounded-2xl font-bold text-lg transition-all flex items-center justify-center gap-3"
-                  >
-                    <span>Shop Collection</span>
-                    <ArrowRight className="w-6 h-6" />
-                  </motion.button>
-                </Link>
-                <Link to="/shop">
-                  <motion.button
-                    whileHover={{ scale: 1.05, backgroundColor: "#f3f4f6" }}
-                    whileTap={{ scale: 0.95 }}
-                    className="w-full sm:w-auto px-10 py-5 bg-white border-2 border-gray-200 text-gray-800 rounded-2xl font-bold text-lg transition-all shadow-sm flex items-center justify-center"
-                  >
-                    Explore Categories
-                  </motion.button>
-                </Link>
-              </motion.div>
-            </motion.div>
-
-            {/* Right Content - Full Interactive 3D Canvas */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 1.5, delay: 0.5 }}
-              className="h-[600px] lg:h-[800px] w-full relative"
-            >
-              {/* Note for User Interaction */}
-              <div className="absolute top-10 right-10 z-20 bg-white/50 backdrop-blur-md px-4 py-2 rounded-full border border-white/40 text-sm font-medium text-emerald-800 shadow-sm pointer-events-none animate-pulse">
-                Click & Drag to Rotate
-              </div>
-              
-              <div className="absolute inset-0 z-0">
-                <ErrorBoundary>
-                  <Canvas camera={{ position: [0, 2, 8], fov: 45 }} className="cursor-grab active:cursor-grabbing drop-shadow-2xl">
-                    <Scene />
-                  </Canvas>
-                </ErrorBoundary>
-              </div>
-            </motion.div>
+        {/* Text Overlays — top-right corner, compact glassmorphism cards */}
+        
+        {/* 0% — CV Nursery */}
+        <motion.div
+          style={{ opacity: opacity1, y: y1 }}
+          className="fixed top-6 right-6 md:top-10 md:right-10 pointer-events-none z-10 max-w-[220px]"
+        >
+          <div className="bg-white/20 backdrop-blur-xl border border-white/30 rounded-2xl px-5 py-4 shadow-xl">
+            <h1 className="text-lg md:text-xl font-bold text-black/90 tracking-tight mb-1 text-right">
+              CV Nursery
+            </h1>
+            <p className="text-xs md:text-sm text-black/60 font-light tracking-wide text-right">
+              Where life begins.
+            </p>
           </div>
-        </div>
-      </section>
+        </motion.div>
+
+        {/* 25% — Rooted in Care */}
+        <motion.div
+          style={{ opacity: opacity2, y: y2 }}
+          className="fixed top-6 right-6 md:top-10 md:right-10 pointer-events-none z-10 max-w-[220px]"
+        >
+          <div className="bg-white/20 backdrop-blur-xl border border-white/30 rounded-2xl px-5 py-4 shadow-xl">
+            <div className="w-6 h-0.5 bg-emerald-500 mb-2 ml-auto rounded-full" />
+            <h2 className="text-base md:text-lg font-medium text-black/90 tracking-tight mb-1 text-right">
+              Rooted in Care
+            </h2>
+            <p className="text-xs md:text-sm text-black/60 font-light tracking-wide text-right">
+              Every plant nurtured with precision.
+            </p>
+          </div>
+        </motion.div>
+
+        {/* 60% — Growing Naturally */}
+        <motion.div
+          style={{ opacity: opacity3, y: y3 }}
+          className="fixed top-6 right-6 md:top-10 md:right-10 pointer-events-none z-10 max-w-[220px]"
+        >
+          <div className="bg-white/20 backdrop-blur-xl border border-white/30 rounded-2xl px-5 py-4 shadow-xl">
+            <div className="w-6 h-0.5 bg-emerald-500 mb-2 ml-auto rounded-full" />
+            <h2 className="text-base md:text-lg font-medium text-black/90 tracking-tight mb-1 text-right">
+              Growing Naturally
+            </h2>
+            <p className="text-xs md:text-sm text-black/60 font-light tracking-wide text-right">
+              From soil to life.
+            </p>
+          </div>
+        </motion.div>
+
+        {/* 90% — CTA */}
+        <motion.div
+          style={{ opacity: opacity4, y: y4 }}
+          className="fixed top-6 right-6 md:top-10 md:right-10 pointer-events-none z-10 max-w-[220px]"
+        >
+          <div className="bg-white/20 backdrop-blur-xl border border-white/30 rounded-2xl px-5 py-4 shadow-xl">
+            <div className="w-6 h-0.5 bg-emerald-500 mb-2 ml-auto rounded-full" />
+            <h2 className="text-base md:text-lg font-semibold text-black/90 tracking-tight mb-1 text-right">
+              Bring Nature Home
+            </h2>
+            <p className="text-xs md:text-sm text-black/60 font-light tracking-wide text-right mb-3">
+              Explore our collection.
+            </p>
+            <div className="pointer-events-auto flex justify-end">
+              <Link to="/shop">
+                <button className="px-5 py-2 bg-black text-white rounded-full font-medium text-xs hover:bg-black/80 transition-colors shadow-md">
+                  Shop Collection
+                </button>
+              </Link>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+
+      {/* --- CONTENT SECTIONS (scroll over the sticky canvas) --- */}
+
+      {/* Stylish Curtain-Reveal Transition */}
+      <div className="relative z-20">
+        {/* Soft gradient curtain that covers the sticky canvas */}
+        <div className="h-32 bg-gradient-to-b from-transparent via-white/80 to-white" />
 
       {/* Advanced Features Section */}
-      <section className="py-20 relative z-10 bg-white border-y border-gray-100">
+      <section className="py-20 relative z-20 bg-white border-y border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
             {[
@@ -325,7 +219,7 @@ export function HomePage() {
       </section>
 
       {/* Modern Categories */}
-      <section className="py-32 overflow-hidden relative">
+      <section className="py-32 overflow-hidden relative z-20 bg-[#fbfcfa]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -382,7 +276,7 @@ export function HomePage() {
       </section>
 
       {/* Premium Best Sellers */}
-      <section className="py-24 bg-gray-50 relative border-y border-gray-100">
+      <section className="py-24 bg-gray-50 relative border-y border-gray-100 z-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -426,7 +320,7 @@ export function HomePage() {
 
       {/* Exclusive Offers Section */}
       {allProducts.some(p => p.discount && p.discount > 0) && (
-        <section className="py-24 bg-rose-50 border-y border-rose-100 relative overflow-hidden">
+        <section className="py-24 bg-rose-50 border-y border-rose-100 relative overflow-hidden z-20">
           <div className="absolute top-0 right-0 w-96 h-96 bg-rose-200/50 rounded-full blur-[80px]" />
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-orange-200/50 rounded-full blur-[80px]" />
           
@@ -475,7 +369,7 @@ export function HomePage() {
       )}
 
       {/* Advanced About Section */}
-      <section className="py-32 relative overflow-hidden bg-white">
+      <section className="py-32 relative overflow-hidden bg-white z-20">
         <div className="absolute right-0 top-1/2 -translate-y-1/2 w-1/3 h-full bg-emerald-50 rounded-l-[100px] -z-10" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
@@ -551,8 +445,7 @@ export function HomePage() {
       </section>
 
       {/* Review Section with Glass Cards */}
-      <section className="py-32 bg-gray-900 relative overflow-hidden">
-        {/* Dynamic Background */}
+      <section className="py-32 bg-gray-900 relative overflow-hidden z-20">
         <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-emerald-500/10 rounded-full blur-[120px] pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-teal-500/10 rounded-full blur-[100px] pointer-events-none" />
         
@@ -608,7 +501,7 @@ export function HomePage() {
       </section>
 
       {/* Premium Newsletter */}
-      <section className="py-32 relative bg-white">
+      <section className="py-32 relative bg-white z-20">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -653,6 +546,9 @@ export function HomePage() {
           </motion.div>
         </div>
       </section>
+
+      </div>{/* End of z-20 wrapper */}
+
     </div>
   );
 }

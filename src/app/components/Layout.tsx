@@ -1,15 +1,40 @@
 import { Outlet, Link, useLocation } from 'react-router';
 import { motion, AnimatePresence } from 'motion/react';
 import { ShoppingCart, Heart, User, Menu, X, Leaf, Search, Phone, Mail } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useApp } from '../context/AppContext';
 
 export function Layout() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { cartCount, user, logout } = useApp();
   const location = useLocation();
+  const [navbarVisible, setNavbarVisible] = useState(location.pathname !== '/');
 
   const isAdmin = location.pathname.startsWith('/admin');
+  const isHome = location.pathname === '/';
+
+  // Show/hide navbar based on scroll position on homepage
+  useEffect(() => {
+    if (!isHome) {
+      setNavbarVisible(true);
+      return;
+    }
+
+    setNavbarVisible(false);
+
+    const handleScroll = () => {
+      // The hero section is 400vh. We want the navbar to appear
+      // once the user scrolls past it. Calculate the threshold.
+      const heroHeight = window.innerHeight * 4; // 400vh
+      const scrolled = window.scrollY;
+      setNavbarVisible(scrolled >= heroHeight - 100);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); // check initial
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [isHome]);
 
   if (isAdmin) {
     return <Outlet />;
@@ -18,7 +43,10 @@ export function Layout() {
   return (
     <div className="min-h-screen flex flex-col">
       {/* Header */}
-      <header className="sticky top-0 z-50 backdrop-blur-lg bg-white/80 border-b border-[var(--glass-border)] shadow-sm">
+      <header
+        className="fixed top-0 left-0 right-0 z-50 backdrop-blur-lg bg-white/80 border-b border-[var(--glass-border)] shadow-sm transition-transform duration-500 ease-out"
+        style={{ transform: navbarVisible ? 'translateY(0)' : 'translateY(-100%)' }}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Top Bar */}
           <div className="border-b border-border/50 py-2 hidden md:flex items-center justify-between text-sm">
