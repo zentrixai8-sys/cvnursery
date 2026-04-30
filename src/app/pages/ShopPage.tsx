@@ -49,8 +49,20 @@ export function ShopPage() {
     });
 
   return (
-    <div className="min-h-screen bg-background">
-
+    <div className="min-h-screen bg-background pt-24">
+      {/* Premium Green Strip */}
+      <div className="w-full bg-emerald-50/50 border-b border-emerald-100 py-3 mb-2">
+        <div className="w-full max-w-[1600px] mx-auto px-4 sm:px-8 lg:px-12">
+          <div className="flex items-center justify-center gap-3">
+            <div className="h-px w-8 bg-emerald-200" />
+            <span className="text-[10px] font-black uppercase tracking-[0.4em] text-emerald-800 opacity-80">
+              Premium Collection
+            </span>
+            <div className="h-px w-8 bg-emerald-200" />
+          </div>
+        </div>
+      </div>
+      
       <div className="w-full max-w-[1600px] mx-auto px-4 sm:px-8 lg:px-12 py-8">
         {/* Mobile Filter Toggle */}
         <div className="lg:hidden mb-6 flex items-center justify-between">

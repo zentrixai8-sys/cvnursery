@@ -141,7 +141,7 @@ export function HomePage() {
         {/* 0% — CV Nursery */}
         <motion.div
           style={{ opacity: opacity1, y: y1 }}
-          className="fixed top-6 right-6 md:top-10 md:right-10 pointer-events-none z-10 max-w-[220px]"
+          className="fixed top-32 right-6 md:top-36 md:right-10 pointer-events-none z-10 max-w-[220px]"
         >
           <div className="bg-white/20 backdrop-blur-xl border border-white/30 rounded-2xl px-5 py-4 shadow-xl">
             <h1 className="text-lg md:text-xl font-bold text-black/90 tracking-tight mb-1 text-right">
@@ -156,7 +156,7 @@ export function HomePage() {
         {/* 25% — Rooted in Care */}
         <motion.div
           style={{ opacity: opacity2, y: y2 }}
-          className="fixed top-6 right-6 md:top-10 md:right-10 pointer-events-none z-10 max-w-[220px]"
+          className="fixed top-32 right-6 md:top-36 md:right-10 pointer-events-none z-10 max-w-[220px]"
         >
           <div className="bg-white/20 backdrop-blur-xl border border-white/30 rounded-2xl px-5 py-4 shadow-xl">
             <div className="w-6 h-0.5 bg-emerald-500 mb-2 ml-auto rounded-full" />
@@ -172,7 +172,7 @@ export function HomePage() {
         {/* 60% — Growing Naturally */}
         <motion.div
           style={{ opacity: opacity3, y: y3 }}
-          className="fixed top-6 right-6 md:top-10 md:right-10 pointer-events-none z-10 max-w-[220px]"
+          className="fixed top-32 right-6 md:top-36 md:right-10 pointer-events-none z-10 max-w-[220px]"
         >
           <div className="bg-white/20 backdrop-blur-xl border border-white/30 rounded-2xl px-5 py-4 shadow-xl">
             <div className="w-6 h-0.5 bg-emerald-500 mb-2 ml-auto rounded-full" />
@@ -188,7 +188,7 @@ export function HomePage() {
         {/* 90% — CTA */}
         <motion.div
           style={{ opacity: opacity4, y: y4 }}
-          className="fixed top-6 right-6 md:top-10 md:right-10 pointer-events-none z-10 max-w-[220px]"
+          className="fixed top-32 right-6 md:top-36 md:right-10 pointer-events-none z-10 max-w-[220px]"
         >
           <div className="bg-white/20 backdrop-blur-xl border border-white/30 rounded-2xl px-5 py-4 shadow-xl">
             <div className="w-6 h-0.5 bg-emerald-500 mb-2 ml-auto rounded-full" />
