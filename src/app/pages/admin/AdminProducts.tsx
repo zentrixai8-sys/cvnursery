@@ -74,16 +74,16 @@ export function AdminProducts() {
       <div className="space-y-10">
         
         {/* Header Section */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
-            <h1 className="text-3xl font-medium tracking-tight text-[#1A1A1A]">Collection</h1>
-            <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mt-1">Manage your botanical assets</p>
+            <h1 className="text-2xl md:text-3xl font-medium tracking-tight text-[#1A1A1A]">Collection</h1>
+            <p className="text-[9px] md:text-[10px] font-black text-slate-400 uppercase tracking-widest mt-1">Manage your botanical assets</p>
           </div>
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => setIsModalOpen(true)}
-            className="px-6 py-3 bg-[#1A1A1A] text-white rounded-2xl font-bold text-[10px] uppercase tracking-widest shadow-lg flex items-center gap-2"
+            className="w-full sm:w-auto px-5 py-3 md:px-6 md:py-3 bg-[#1A1A1A] text-white rounded-xl md:rounded-2xl font-bold text-[9px] md:text-[10px] uppercase tracking-widest shadow-lg flex items-center justify-center gap-2"
           >
             <Plus className="w-4 h-4" />
             <span>Add New Product</span>
@@ -114,7 +114,7 @@ export function AdminProducts() {
               animate={{ opacity: 1, scale: 1 }}
               className="bg-white rounded-3xl overflow-hidden shadow-sm border border-white/60 group hover:shadow-xl transition-all flex flex-col"
             >
-              <div className="h-48 relative overflow-hidden">
+              <div className="h-40 md:h-48 relative overflow-hidden">
                 <img 
                   src={product.image} 
                   alt={product.name} 
@@ -124,7 +124,7 @@ export function AdminProducts() {
                     target.src = 'https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?q=80&w=2000';
                   }}
                 />
-                <div className="absolute top-4 right-4 flex flex-col gap-1.5">
+                <div className="absolute top-3 right-3 flex flex-col gap-1.5">
                    <button className="w-8 h-8 bg-white/80 backdrop-blur-md rounded-lg flex items-center justify-center shadow-md hover:bg-white transition-colors">
                      <Edit className="w-3.5 h-3.5 text-slate-600" />
                    </button>
@@ -133,12 +133,12 @@ export function AdminProducts() {
                    </button>
                 </div>
                 {product.discount > 0 && (
-                  <div className="absolute bottom-4 left-4 px-3 py-1 bg-red-500 text-white rounded-md text-[8px] font-black uppercase tracking-widest">
+                  <div className="absolute bottom-3 left-3 px-2 py-0.5 md:px-3 md:py-1 bg-red-500 text-white rounded-md text-[7px] md:text-[8px] font-black uppercase tracking-widest">
                     {product.discount}% OFF
                   </div>
                 )}
               </div>
-              <div className="p-5 space-y-3">
+              <div className="p-4 md:p-5 space-y-3">
                 <div className="flex justify-between items-start">
                   <div>
                     <h3 className="text-base font-bold text-slate-900 leading-tight">{product.name}</h3>
@@ -170,17 +170,17 @@ export function AdminProducts() {
            <motion.div
              initial={{ opacity: 0, y: 100, scale: 0.9 }}
              animate={{ opacity: 1, y: 0, scale: 1 }}
-             className="bg-[#F7F5E4] w-full max-w-xl rounded-[3.5rem] shadow-2xl p-12 relative overflow-hidden"
+             className="bg-[#F7F5E4] w-full max-w-xl rounded-[2.5rem] md:rounded-[3.5rem] p-6 md:p-12 relative overflow-hidden"
            >
              <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-400/10 rounded-full -mr-32 -mt-32 blur-3xl" />
              
-             <div className="flex justify-between items-center mb-10 relative z-10">
+             <div className="flex justify-between items-center mb-8 md:mb-10 relative z-10">
                <div>
-                 <h2 className="text-4xl font-bold tracking-tight">New Addition</h2>
-                 <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mt-1">Add to CV Nursery collection</p>
+                 <h2 className="text-2xl md:text-4xl font-bold tracking-tight">New Addition</h2>
+                 <p className="text-[10px] md:text-xs font-bold text-slate-400 uppercase tracking-widest mt-1">Add to CV Nursery collection</p>
                </div>
-               <button onClick={() => setIsModalOpen(false)} className="w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-lg border border-slate-100">
-                 <X className="w-6 h-6 text-slate-400" />
+               <button onClick={() => setIsModalOpen(false)} className="w-10 h-10 md:w-14 md:h-14 bg-white rounded-full flex items-center justify-center shadow-lg border border-slate-100">
+                 <X className="w-5 h-5 md:w-6 md:h-6 text-slate-400" />
                </button>
              </div>
 
@@ -207,20 +207,20 @@ export function AdminProducts() {
                    </select>
                  </div>
 
-                 <div className="bg-white/50 p-6 rounded-[2rem] border border-white/60">
-                    <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4 block">Product Asset</label>
-                    <div className="relative border-2 border-dashed border-slate-200 rounded-[2rem] p-10 flex flex-col items-center justify-center bg-white group cursor-pointer overflow-hidden">
+                 <div className="bg-white/50 p-4 md:p-6 rounded-[1.5rem] md:rounded-[2rem] border border-white/60">
+                    <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-3 md:mb-4 block">Product Asset</label>
+                    <div className="relative border-2 border-dashed border-slate-200 rounded-[1.5rem] md:rounded-[2rem] p-6 md:p-10 flex flex-col items-center justify-center bg-white group cursor-pointer overflow-hidden">
                        <input type="file" required accept="image/*" onChange={e => e.target.files && setImageFile(e.target.files[0])} className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10" />
                        {imageFile ? (
-                         <div className="text-center">
-                           <p className="text-emerald-600 font-bold">{imageFile.name}</p>
+                         <div className="text-center px-4">
+                           <p className="text-emerald-600 font-bold text-xs truncate">{imageFile.name}</p>
                          </div>
                        ) : (
                          <>
-                           <div className="w-14 h-14 bg-slate-50 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                             <Upload className="w-6 h-6 text-slate-400" />
+                           <div className="w-10 h-10 md:w-14 md:h-14 bg-slate-50 rounded-xl md:rounded-2xl flex items-center justify-center mb-3 md:mb-4 group-hover:scale-110 transition-transform">
+                             <Upload className="w-5 h-5 md:w-6 md:h-6 text-slate-400" />
                            </div>
-                           <p className="text-sm font-bold text-slate-700">Drag or click to upload</p>
+                           <p className="text-xs md:text-sm font-bold text-slate-700">Drag or click to upload</p>
                          </>
                        )}
                     </div>

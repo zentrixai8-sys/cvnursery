@@ -51,28 +51,31 @@ export function AdminInventory() {
       <div className="space-y-10">
         
         {/* Real-time Stats Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-           <div className="bg-white rounded-3xl p-6 shadow-sm border border-white/60">
-              <div className="w-8 h-8 bg-blue-50 text-blue-600 rounded-lg flex items-center justify-center mb-3"><Package className="w-4 h-4" /></div>
-              <p className="text-[8px] font-black text-slate-400 uppercase tracking-widest mb-1">Total Assets</p>
-              <h3 className="text-2xl font-bold tracking-tighter">{products.length} Items</h3>
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-6">
+           <div className="bg-white rounded-[1.5rem] md:rounded-3xl p-5 md:p-6 shadow-sm border border-white/60">
+              <div className="w-8 h-8 md:w-10 md:h-10 bg-blue-50 text-blue-600 rounded-lg md:rounded-xl flex items-center justify-center mb-3"><Package className="w-4 h-4" /></div>
+              <p className="text-[9px] md:text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Total Assets</p>
+              <h3 className="text-xl md:text-2xl font-bold tracking-tighter">{products.length} Items</h3>
            </div>
-           <div className="bg-white rounded-3xl p-6 shadow-sm border border-white/60">
-              <div className="w-8 h-8 bg-rose-50 text-rose-600 rounded-lg flex items-center justify-center mb-3"><AlertTriangle className="w-4 h-4" /></div>
-              <p className="text-[8px] font-black text-slate-400 uppercase tracking-widest mb-1">Stock Alerts</p>
-              <h3 className="text-2xl font-bold tracking-tighter text-rose-500">{lowStockCount} Critical</h3>
+           <div className="bg-white rounded-[1.5rem] md:rounded-3xl p-5 md:p-6 shadow-sm border border-white/60">
+              <div className="w-8 h-8 md:w-10 md:h-10 bg-rose-50 text-rose-600 rounded-lg md:rounded-xl flex items-center justify-center mb-3"><AlertTriangle className="w-4 h-4" /></div>
+              <p className="text-[9px] md:text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Stock Alerts</p>
+              <h3 className="text-xl md:text-2xl font-bold tracking-tighter text-rose-500">{lowStockCount} Critical</h3>
            </div>
-           <div className="md:col-span-2 bg-[#1A1A1A] rounded-3xl p-6 shadow-2xl text-white flex justify-between items-center relative overflow-hidden">
+           <div className="md:col-span-2 bg-[#1A1A1A] rounded-[1.5rem] md:rounded-3xl p-5 md:p-6 shadow-2xl text-white flex justify-between items-center relative overflow-hidden">
               <div className="relative z-10">
-                <p className="text-[8px] font-black text-white/40 uppercase tracking-widest mb-1">Inventory Valuation</p>
-                <h3 className="text-4xl font-bold tracking-tighter">₹{(totalValue / 1000).toFixed(1)}K</h3>
-                <p className="text-[8px] text-emerald-400 font-bold uppercase mt-1">+12% from last month</p>
+                <p className="text-[9px] md:text-[10px] font-black text-white/40 uppercase tracking-widest mb-1">Inventory Valuation</p>
+                <h3 className="text-3xl md:text-4xl font-bold tracking-tighter">₹{(totalValue / 1000).toFixed(1)}K</h3>
+                <p className="text-[8px] text-emerald-400 font-bold uppercase mt-1 tracking-widest">+12% from last month</p>
+              </div>
+              <div className="hidden sm:block absolute right-[-20px] top-[-20px] opacity-10">
+                 <Layers className="w-40 h-40" />
               </div>
            </div>
         </div>
 
         {/* Toolbar: Search & Filter */}
-        <div className="flex flex-col md:flex-row gap-4">
+        <div className="flex flex-col md:flex-row gap-3">
            <div className="flex-1 relative group">
               <Search className="absolute left-5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-[#1A1A1A] transition-colors" />
               <input 
@@ -80,29 +83,30 @@ export function AdminInventory() {
                 placeholder="Search assets..." 
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className="w-full pl-12 pr-6 py-3 bg-white rounded-2xl border border-white shadow-sm focus:outline-none focus:ring-2 focus:ring-slate-100 transition-all font-medium text-sm"
+                className="w-full pl-12 pr-6 py-4 bg-white rounded-2xl border border-white shadow-sm focus:outline-none focus:ring-2 focus:ring-slate-100 transition-all font-medium text-sm"
               />
            </div>
            <div className="flex gap-2">
               <select 
                 value={categoryFilter}
                 onChange={(e) => setCategoryFilter(e.target.value)}
-                className="px-6 py-3 bg-white rounded-2xl border border-white shadow-sm focus:outline-none font-bold text-[10px] uppercase tracking-widest appearance-none cursor-pointer"
+                className="flex-1 md:flex-none px-6 py-4 bg-white rounded-2xl border border-white shadow-sm focus:outline-none font-bold text-[9px] md:text-[10px] uppercase tracking-widest appearance-none cursor-pointer"
               >
                  <option value="All">All Categories</option>
                  <option value="Indoor Plants">Indoor</option>
                  <option value="Outdoor Plants">Outdoor</option>
                  <option value="Pots">Pots</option>
               </select>
-              <button className="w-12 h-12 bg-[#1A1A1A] text-white rounded-2xl flex items-center justify-center shadow-lg hover:scale-105 transition-transform">
+              <button className="w-14 h-14 bg-[#1A1A1A] text-white rounded-2xl flex items-center justify-center shadow-lg hover:scale-105 transition-transform">
                  <Filter className="w-4 h-4" />
               </button>
            </div>
         </div>
 
         {/* Inventory Artistic Table */}
-        <div className="bg-white rounded-3xl p-2 shadow-sm border border-white/60 overflow-hidden">
-           <div className="overflow-x-auto">
+        <div className="bg-white rounded-[2rem] md:rounded-3xl p-2 md:p-4 shadow-sm border border-white/60 overflow-hidden">
+           {/* Desktop Table View */}
+           <div className="hidden md:block overflow-x-auto">
              <table className="w-full text-left">
                <thead>
                  <tr className="text-[8px] font-black text-slate-400 uppercase tracking-[0.2em] border-b border-slate-50">
@@ -181,6 +185,52 @@ export function AdminInventory() {
                  </AnimatePresence>
                </tbody>
              </table>
+           </div>
+
+           {/* Mobile Card View */}
+           <div className="md:hidden divide-y divide-slate-50">
+             {filteredProducts.map((p) => (
+               <div key={p.id} className="p-5 flex flex-col gap-4">
+                 <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                       <div className="w-12 h-12 rounded-xl overflow-hidden border border-slate-100 shrink-0">
+                         <img src={p.image} className="w-full h-full object-cover" />
+                       </div>
+                       <div>
+                         <h4 className="text-sm font-bold text-slate-900 leading-tight">{p.name}</h4>
+                         <p className="text-[8px] font-black text-slate-400 uppercase tracking-widest mt-0.5">{p.category}</p>
+                       </div>
+                    </div>
+                    <div className="text-right">
+                       <p className="text-[8px] font-black text-slate-400 uppercase tracking-widest mb-0.5">Price</p>
+                       <p className="text-sm font-black text-indigo-600">₹{p.price}</p>
+                    </div>
+                 </div>
+                 
+                 <div className="flex items-center justify-between bg-slate-50/50 p-4 rounded-2xl">
+                    <div className="flex flex-col">
+                       <p className="text-[8px] font-black text-slate-400 uppercase tracking-widest mb-1">Current Stock</p>
+                       <span className={`text-xl font-black tracking-tighter ${ (p.reviews || 0) < 10 ? 'text-rose-500' : 'text-slate-900'}`}>
+                          {p.reviews || 0}
+                       </span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                       <button 
+                         onClick={() => updateStock(p.id, -1)}
+                         className="w-10 h-10 bg-white border border-slate-100 rounded-xl flex items-center justify-center shadow-sm"
+                       >
+                          <Minus className="w-4 h-4" />
+                       </button>
+                       <button 
+                         onClick={() => updateStock(p.id, 1)}
+                         className="w-10 h-10 bg-[#1A1A1A] text-white rounded-xl flex items-center justify-center shadow-sm"
+                       >
+                          <Plus className="w-4 h-4" />
+                       </button>
+                    </div>
+                 </div>
+               </div>
+             ))}
            </div>
         </div>
 

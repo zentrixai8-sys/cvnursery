@@ -30,15 +30,15 @@ export function AdminOrders() {
         {/* Header Section */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div>
-            <h1 className="text-6xl font-medium tracking-tight text-[#1A1A1A]">Fulfillment</h1>
-            <p className="text-xs font-bold text-slate-400 uppercase tracking-[0.3em] mt-2">Manage customer satisfaction</p>
+            <h1 className="text-4xl md:text-6xl font-medium tracking-tight text-[#1A1A1A]">Fulfillment</h1>
+            <p className="text-[10px] md:text-xs font-bold text-slate-400 uppercase tracking-[0.2em] md:tracking-[0.3em] mt-2">Manage customer satisfaction</p>
           </div>
-          <div className="flex gap-4">
-             <button className="w-16 h-16 bg-white border border-slate-100 rounded-full flex items-center justify-center shadow-sm hover:shadow-md transition-all">
+          <div className="flex gap-3 md:gap-4">
+             <button className="w-12 h-12 md:w-16 md:h-16 bg-white border border-slate-100 rounded-full flex items-center justify-center shadow-sm hover:shadow-md transition-all">
                <Filter className="w-5 h-5 text-slate-600" />
              </button>
-             <button className="px-8 py-5 bg-[#1A1A1A] text-white rounded-full font-bold text-xs uppercase tracking-widest shadow-2xl flex items-center gap-3">
-               <ShoppingBag className="w-5 h-5" />
+             <button className="px-5 py-3 md:px-8 md:py-5 bg-[#1A1A1A] text-white rounded-full font-bold text-[10px] md:text-xs uppercase tracking-widest shadow-2xl flex items-center gap-3">
+               <ShoppingBag className="w-4 h-4 md:w-5 md:h-5" />
                <span>Order Metrics</span>
              </button>
           </div>
@@ -65,36 +65,36 @@ export function AdminOrders() {
               key={order.id}
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
-              className="bg-white rounded-[2.5rem] p-8 shadow-sm border border-white/60 flex flex-col md:flex-row md:items-center justify-between gap-8 group hover:shadow-xl transition-all"
+              className="bg-white rounded-[2rem] md:rounded-[2.5rem] p-5 md:p-8 shadow-sm border border-white/60 flex flex-col md:flex-row md:items-center justify-between gap-6 md:gap-8 group hover:shadow-xl transition-all"
             >
-              <div className="flex items-center gap-6">
-                <div className={`w-20 h-20 rounded-[1.5rem] flex items-center justify-center relative overflow-hidden ${
+              <div className="flex items-center gap-4 md:gap-6">
+                <div className={`w-14 h-14 md:w-20 md:h-20 rounded-[1rem] md:rounded-[1.5rem] flex items-center justify-center relative overflow-hidden shrink-0 ${
                   order.status === 'delivered' ? 'bg-emerald-50 text-emerald-600' : 'bg-slate-50 text-slate-400'
                 }`}>
-                  <Package className="w-8 h-8 relative z-10" />
+                  <Package className="w-6 h-6 md:w-8 md:h-8 relative z-10" />
                   <div className="absolute inset-0 bg-[repeating-linear-gradient(45deg,transparent,transparent_10px,rgba(0,0,0,0.02)_10px,rgba(0,0,0,0.02)_20px)]" />
                 </div>
                 <div>
-                   <h3 className="text-xl font-bold text-slate-900">Order #{order.id.slice(0, 8)}</h3>
+                   <h3 className="text-lg md:text-xl font-bold text-slate-900">Order #{order.id.slice(0, 8)}</h3>
                    <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mt-1">{order.date}</p>
                 </div>
               </div>
 
-              <div className="flex flex-wrap gap-12">
+              <div className="flex flex-row md:flex-row flex-wrap gap-x-8 gap-y-4 md:gap-12 py-4 md:py-0 border-y border-slate-50 md:border-none">
                  <div>
                    <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Items</p>
-                   <p className="font-bold text-slate-700">{order.items.length} Units</p>
+                   <p className="text-sm md:font-bold text-slate-700">{order.items.length} Units</p>
                  </div>
                  <div>
                    <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Total</p>
-                   <p className="text-2xl font-bold tracking-tighter">₹{order.total.toLocaleString()}</p>
+                   <p className="text-lg md:text-2xl font-bold tracking-tighter">₹{order.total.toLocaleString()}</p>
                  </div>
                  <div>
                    <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Status</p>
                    <select
                      value={order.status}
                      onChange={(e) => updateOrderStatus(order.id, e.target.value as any)}
-                     className={`px-6 py-2 rounded-full text-[10px] font-black uppercase tracking-widest border-none appearance-none cursor-pointer focus:ring-0 ${
+                     className={`px-4 py-1.5 md:px-6 md:py-2 rounded-full text-[9px] md:text-[10px] font-black uppercase tracking-widest border-none appearance-none cursor-pointer focus:ring-0 ${
                        order.status === 'delivered' ? 'bg-emerald-100 text-emerald-700' :
                        order.status === 'shipped' ? 'bg-blue-100 text-blue-700' :
                        order.status === 'processing' ? 'bg-amber-100 text-amber-700' :
@@ -110,8 +110,8 @@ export function AdminOrders() {
                  </div>
               </div>
 
-              <div className="flex items-center gap-4">
-                 <button className="w-14 h-14 bg-[#1A1A1A] text-white rounded-full flex items-center justify-center shadow-xl hover:scale-105 transition-all">
+              <div className="flex items-center justify-end md:justify-center gap-4">
+                 <button className="w-12 h-12 md:w-14 md:h-14 bg-[#1A1A1A] text-white rounded-full flex items-center justify-center shadow-xl hover:scale-105 transition-all">
                    <ArrowUpRight className="w-5 h-5" />
                  </button>
               </div>

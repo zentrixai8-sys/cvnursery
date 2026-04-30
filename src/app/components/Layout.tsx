@@ -48,7 +48,7 @@ export function Layout() {
   return (
     <div className="min-h-screen flex flex-col">
       {/* Header */}
-      <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${navbarVisible ? 'bg-white/80 backdrop-blur-md shadow-sm' : 'bg-transparent'}`}>
+      <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${navbarVisible ? 'bg-white/80 backdrop-blur-md shadow-sm' : 'bg-transparent max-md:bg-white/80 max-md:backdrop-blur-md max-md:shadow-sm'}`}>
         {/* NEWS-STYLE OFFER TICKER (FULL WIDTH) */}
         <div className="w-full bg-slate-900 text-white overflow-hidden flex items-center border-b border-slate-800">
            <div className="bg-rose-600 text-white text-[10px] font-black uppercase tracking-[0.2em] px-6 py-2 z-20 whitespace-nowrap shadow-[10px_0_20px_rgba(15,23,42,1)] flex items-center gap-2 relative">
@@ -102,17 +102,17 @@ export function Layout() {
               )}
             </nav>
 
-            {/* Desktop Actions */}
-            <div className="hidden md:flex items-center gap-4">
+            {/* Actions */}
+            <div className="flex items-center gap-2 md:gap-4">
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="p-2 hover:bg-muted rounded-lg transition-colors"
+                className="hidden md:block p-2 hover:bg-muted rounded-lg transition-colors"
               >
                 <Search className="w-5 h-5" />
               </motion.button>
               
-              <Link to="/dashboard?tab=wishlist">
+              <Link to="/dashboard?tab=wishlist" className="hidden md:block">
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
@@ -142,7 +142,7 @@ export function Layout() {
               </Link>
 
               {user ? (
-                <div className="flex items-center gap-2">
+                <div className="hidden md:flex items-center gap-2">
                   <Link to="/dashboard">
                     <motion.button
                       whileHover={{ scale: 1.05 }}
@@ -163,7 +163,7 @@ export function Layout() {
                   </motion.button>
                 </div>
               ) : (
-                <Link to="/login">
+                <Link to="/login" className="hidden md:block">
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
@@ -174,16 +174,16 @@ export function Layout() {
                   </motion.button>
                 </Link>
               )}
-            </div>
 
-            {/* Mobile Menu Button */}
-            <motion.button
-              whileTap={{ scale: 0.95 }}
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 hover:bg-muted rounded-lg"
-            >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </motion.button>
+              {/* Mobile Menu Button */}
+              <motion.button
+                whileTap={{ scale: 0.95 }}
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="md:hidden p-2 hover:bg-muted rounded-lg"
+              >
+                {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              </motion.button>
+            </div>
           </div>
         </div>
 

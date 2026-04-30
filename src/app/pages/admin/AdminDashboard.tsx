@@ -117,19 +117,19 @@ export function AdminDashboard() {
             </div>
           </div>
 
-          <div className="flex flex-wrap gap-3">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
              {[
                { label: 'Revenue', value: `₹${totalRevenue.toLocaleString()}`, color: 'bg-blue-400' },
                { label: 'Orders', value: totalOrders, color: 'bg-emerald-400' },
                { label: 'Clients', value: customers.length, color: 'bg-purple-400' },
                { label: 'Growth', value: growth, color: 'bg-orange-400' },
              ].map(stat => (
-               <div key={stat.label} className="bg-white px-6 py-4 rounded-3xl shadow-sm border border-white/60 min-w-[120px] group hover:bg-[#1A1A1A] hover:text-white transition-all">
+               <div key={stat.label} className="bg-white px-4 py-3 md:px-6 md:py-4 rounded-[1.5rem] md:rounded-3xl shadow-sm border border-white/60 group hover:bg-[#1A1A1A] hover:text-white transition-all">
                   <div className="flex items-center gap-2 mb-1">
                      <div className={`w-1.5 h-1.5 ${stat.color} rounded-full`} />
                      <p className="text-[8px] font-black text-slate-400 uppercase tracking-widest group-hover:text-white/40">{stat.label}</p>
                   </div>
-                  <h4 className="text-xl font-bold tracking-tighter">{stat.value}</h4>
+                  <h4 className="text-base md:text-xl font-bold tracking-tighter">{stat.value}</h4>
                </div>
              ))}
           </div>
@@ -145,7 +145,7 @@ export function AdminDashboard() {
             </div>
           </div>
 
-          <div className="bg-white rounded-3xl p-6 shadow-sm border border-white/60 flex flex-col h-64">
+          <div className="bg-white rounded-[2rem] md:rounded-3xl p-5 md:p-6 shadow-sm border border-white/60 flex flex-col h-64">
             <div className="flex justify-between items-start mb-6">
               <h3 className="text-sm font-bold">Store Activity</h3>
               <button className="w-8 h-8 bg-slate-50 rounded-full flex items-center justify-center"><ArrowUpRight className="w-4 h-4" /></button>
@@ -201,7 +201,7 @@ export function AdminDashboard() {
 
            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
               {/* Line Chart */}
-              <div className="lg:col-span-2 bg-white rounded-3xl p-8 shadow-sm border border-white/60">
+              <div className="lg:col-span-2 bg-white rounded-[2rem] md:rounded-3xl p-5 md:p-8 shadow-sm border border-white/60">
                  <div className="flex justify-between items-start mb-6">
                     <div>
                        <h3 className="text-lg font-bold tracking-tight">Revenue Trend</h3>
@@ -275,7 +275,7 @@ export function AdminDashboard() {
               </div>
 
               {/* Donut Chart */}
-              <div className="lg:col-span-1 bg-white rounded-3xl p-8 shadow-sm border border-white/60 flex flex-col items-center">
+              <div className="lg:col-span-1 bg-white rounded-[2rem] md:rounded-3xl p-5 md:p-8 shadow-sm border border-white/60 flex flex-col items-center">
                  <div className="w-full mb-6">
                     <h3 className="text-lg font-bold tracking-tight">Category Mix</h3>
                     <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Distribution</p>
@@ -308,7 +308,7 @@ export function AdminDashboard() {
 
         {/* Section 4: VIP & Best Sellers (Bottom) */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 pt-12 border-t border-slate-100">
-           <div className="bg-white rounded-[3rem] p-10 shadow-sm border border-white/60">
+           <div className="bg-white rounded-[2.5rem] md:rounded-[3rem] p-6 md:p-10 shadow-sm border border-white/60">
               <div className="flex justify-between items-center mb-10">
                  <div>
                     <h3 className="text-2xl font-bold tracking-tight">VIP Clients</h3>
@@ -323,33 +323,33 @@ export function AdminDashboard() {
                    <motion.div 
                      key={c.id} 
                      whileHover={{ x: 10 }}
-                     className="flex justify-between items-center p-8 bg-slate-50/50 rounded-[2.5rem] border border-slate-100/50 hover:bg-white hover:shadow-xl transition-all group cursor-pointer"
+                     className="flex flex-col sm:flex-row sm:justify-between sm:items-center p-5 md:p-8 bg-slate-50/50 rounded-[2rem] md:rounded-[2.5rem] border border-slate-100/50 hover:bg-white hover:shadow-xl transition-all group cursor-pointer gap-4 md:gap-0"
                    >
-                      <div className="flex items-center gap-6">
-                         <div className="relative">
-                            <div className="w-16 h-16 bg-[#1A1A1A] text-white rounded-3xl flex items-center justify-center text-xl font-bold group-hover:rotate-6 transition-transform">
+                      <div className="flex items-center gap-4 md:gap-6">
+                         <div className="relative shrink-0">
+                            <div className="w-12 h-12 md:w-16 md:h-16 bg-[#1A1A1A] text-white rounded-2xl md:rounded-3xl flex items-center justify-center text-lg md:text-xl font-bold group-hover:rotate-6 transition-transform">
                                {c.name[0]}
                             </div>
-                            <div className="absolute -top-2 -right-2 w-6 h-6 bg-emerald-500 border-4 border-white rounded-full" title="Active" />
+                            <div className="absolute -top-1 -right-1 md:-top-2 md:-right-2 w-4 h-4 md:w-6 md:h-6 bg-emerald-500 border-2 md:border-4 border-white rounded-full" title="Active" />
                          </div>
                          <div>
-                            <p className="text-lg font-bold text-slate-900 leading-tight">{c.name}</p>
-                            <div className="flex items-center gap-3 mt-1">
-                               <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">{c.orders} Orders</span>
+                            <p className="text-base md:text-lg font-bold text-slate-900 leading-tight">{c.name}</p>
+                            <div className="flex items-center gap-2 md:gap-3 mt-1">
+                               <span className="text-[9px] md:text-[10px] font-black text-slate-400 uppercase tracking-widest">{c.orders} Orders</span>
                                <div className="w-1 h-1 bg-slate-200 rounded-full" />
                                <div className="px-2 py-0.5 bg-amber-100 text-amber-700 rounded-md text-[8px] font-black uppercase tracking-widest">VIP</div>
                             </div>
                          </div>
                       </div>
-                      <div className="text-right">
-                         <p className="text-xs font-black text-slate-400 uppercase tracking-widest mb-1">Lifetime Value</p>
-                         <p className="text-2xl font-black tracking-tighter text-indigo-600">₹{c.totalSpent.toLocaleString()}</p>
+                      <div className="text-left sm:text-right border-t sm:border-t-0 border-slate-100 pt-3 sm:pt-0">
+                         <p className="text-[9px] md:text-xs font-black text-slate-400 uppercase tracking-widest mb-0.5 md:mb-1">Lifetime Value</p>
+                         <p className="text-xl md:text-2xl font-black tracking-tighter text-indigo-600">₹{c.totalSpent.toLocaleString()}</p>
                       </div>
                    </motion.div>
                  ))}
               </div>
            </div>
-           <div className="bg-white rounded-[3rem] p-10 shadow-sm border border-white/60">
+           <div className="bg-white rounded-[2.5rem] md:rounded-[3rem] p-6 md:p-10 shadow-sm border border-white/60">
               <h3 className="text-2xl font-bold tracking-tight mb-10">Best Sellers</h3>
               <div className="grid grid-cols-2 gap-8">
                  {bestSellers.map(s => (

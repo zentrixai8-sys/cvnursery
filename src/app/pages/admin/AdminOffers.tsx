@@ -14,12 +14,12 @@ export function AdminOffers() {
       <div className="space-y-6">
         
         {/* Header Section (Compact) */}
-        <div className="flex justify-between items-center bg-white p-4 rounded-2xl border border-white/60 shadow-sm">
+        <div className="flex flex-col sm:justify-between sm:items-center bg-white p-4 md:p-6 rounded-2xl border border-white/60 shadow-sm gap-4">
            <div>
-             <h3 className="text-2xl font-bold tracking-tight text-slate-900">Campaigns</h3>
+             <h3 className="text-xl md:text-2xl font-bold tracking-tight text-slate-900">Campaigns</h3>
              <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mt-0.5">Create floating home page banners</p>
            </div>
-           <button className="px-6 py-3 bg-[#1A1A1A] text-white rounded-xl font-bold text-[10px] uppercase tracking-widest shadow-lg flex items-center gap-2 hover:scale-105 transition-transform">
+           <button className="w-full sm:w-auto px-5 py-3 md:px-6 md:py-3 bg-[#1A1A1A] text-white rounded-xl font-bold text-[9px] md:text-[10px] uppercase tracking-widest shadow-lg flex items-center justify-center gap-2 hover:scale-105 transition-transform">
              <Plus className="w-4 h-4" />
              Create New Offer
            </button>
@@ -28,7 +28,7 @@ export function AdminOffers() {
         {/* Offers Grid (Compact) */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
            {offers.map((offer) => (
-             <div key={offer.id} className="bg-white rounded-[2rem] overflow-hidden shadow-sm border border-white/60 group relative h-64">
+             <div key={offer.id} className="bg-white rounded-[1.5rem] md:rounded-[2rem] overflow-hidden shadow-sm border border-white/60 group relative h-60 md:h-64">
                 <img 
                   src={offer.banner} 
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[1.5s]" 

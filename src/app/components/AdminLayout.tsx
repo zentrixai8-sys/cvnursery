@@ -13,9 +13,11 @@ import {
   Layers, 
   Tag, 
   ChevronRight,
-  LogOut
+  LogOut,
+  Menu,
+  X
 } from 'lucide-react';
-import { ReactNode } from 'react';
+import { ReactNode, useState } from 'react';
 import { supabase } from '../../lib/supabase';
 
 interface AdminLayoutProps {
@@ -26,6 +28,7 @@ interface AdminLayoutProps {
 export function AdminLayout({ children, title }: AdminLayoutProps) {
   const location = useLocation();
   const navigate = useNavigate();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const handleSignOut = async () => {
     await supabase.auth.signOut();
@@ -46,7 +49,75 @@ export function AdminLayout({ children, title }: AdminLayoutProps) {
   return (
     <div className="min-h-screen bg-[#FDFCF0] font-sans text-[#1A1A1A] flex p-2 lg:p-4 gap-4">
       
-      {/* Sidebar Navigation */}
+      {/* Mobile Menu Drawer */}
+      <motion.div
+        initial={false}
+        animate={isMobileMenuOpen ? "open" : "closed"}
+        className={`fixed inset-0 z-[100] lg:hidden ${isMobileMenuOpen ? 'pointer-events-auto' : 'pointer-events-none'}`}
+      >
+        {/* Backdrop */}
+        <motion.div
+          variants={{
+            open: { opacity: 1 },
+            closed: { opacity: 0 }
+          }}
+          onClick={() => setIsMobileMenuOpen(false)}
+          className="absolute inset-0 bg-black/20 backdrop-blur-sm"
+        />
+
+        {/* Drawer */}
+        <motion.aside
+          variants={{
+            open: { x: 0 },
+            closed: { x: '-100%' }
+          }}
+          transition={{ type: "spring", damping: 25, stiffness: 200 }}
+          className="absolute top-0 left-0 bottom-0 w-[280px] bg-[#F7F5E4] shadow-2xl flex flex-col"
+        >
+          <div className="p-6 flex items-center justify-between border-b border-white/40">
+            <Link to="/admin" className="flex items-center gap-2 px-4 py-2 bg-white/40 rounded-full border border-white/60">
+              <div className="w-3 h-3 bg-emerald-600 rounded-full" />
+              <span className="font-bold text-sm tracking-tight">CV Nursery</span>
+            </Link>
+            <button onClick={() => setIsMobileMenuOpen(false)} className="p-2 bg-white rounded-full border border-slate-200">
+              <X className="w-4 h-4 text-slate-600" />
+            </button>
+          </div>
+
+          <nav className="flex-1 px-4 py-6 space-y-1 overflow-y-auto no-scrollbar">
+            {navItems.map((item) => {
+              const isActive = location.pathname === item.path || (item.path === '/admin' && location.pathname === '/admin/');
+              return (
+                <Link key={item.path} to={item.path} onClick={() => setIsMobileMenuOpen(false)}>
+                  <div
+                    className={`flex items-center justify-between px-4 py-3 rounded-2xl transition-all ${
+                      isActive ? 'bg-[#1A1A1A] text-white shadow-lg' : 'text-slate-500 active:bg-white/40'
+                    }`}
+                  >
+                    <div className="flex items-center gap-3">
+                      <item.icon className={`w-4 h-4 ${isActive ? 'text-emerald-400' : 'text-slate-400'}`} />
+                      <span className="text-[12px] font-bold">{item.label}</span>
+                    </div>
+                    {isActive && <ChevronRight className="w-3 h-3 text-white/40" />}
+                  </div>
+                </Link>
+              );
+            })}
+          </nav>
+
+          <div className="p-6 border-t border-white/40">
+            <button 
+              onClick={handleSignOut}
+              className="w-full py-4 bg-white border border-slate-100 rounded-2xl text-[10px] font-black uppercase tracking-widest flex items-center justify-center gap-2"
+            >
+               <LogOut className="w-4 h-4" />
+               Sign Out
+            </button>
+          </div>
+        </motion.aside>
+      </motion.div>
+
+      {/* Desktop Sidebar Navigation */}
       <aside className="w-64 hidden lg:flex flex-col bg-[#F7F5E4] rounded-[2rem] shadow-sm border border-white/40 overflow-hidden sticky top-4 h-[95vh]">
         {/* Sidebar Logo */}
         <div className="p-6">
@@ -106,8 +177,16 @@ export function AdminLayout({ children, title }: AdminLayoutProps) {
       <div className="flex-1 bg-[#F7F5E4] rounded-[2rem] shadow-sm min-h-[95vh] overflow-hidden relative border border-white/40">
         
         {/* Top Actions Bar */}
-        <header className="px-6 py-4 flex items-center justify-between sticky top-0 bg-[#F7F5E4]/80 backdrop-blur-md z-50">
-          <h2 className="text-lg font-bold tracking-tight">{title}</h2>
+        <header className="px-4 md:px-6 py-4 flex items-center justify-between sticky top-0 bg-[#F7F5E4]/80 backdrop-blur-md z-50">
+          <div className="flex items-center gap-3">
+            <button 
+              onClick={() => setIsMobileMenuOpen(true)}
+              className="lg:hidden w-10 h-10 flex items-center justify-center bg-white rounded-full border border-slate-200 shadow-sm"
+            >
+              <Menu className="w-5 h-5 text-slate-600" />
+            </button>
+            <h2 className="text-base md:text-lg font-bold tracking-tight">{title}</h2>
+          </div>
           
           <div className="flex items-center gap-3">
             <button className="w-12 h-12 flex items-center justify-center bg-white rounded-full border border-slate-200 shadow-sm hover:shadow-md transition-all">
