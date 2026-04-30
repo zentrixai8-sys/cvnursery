@@ -335,12 +335,12 @@ export function Layout() {
               <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-emerald-400 mb-5">Get in Touch</h3>
               <ul className="space-y-4">
                 <li>
-                  <a href="tel:+917089935022" className="flex items-center gap-3 text-white/50 hover:text-emerald-400 transition-colors group">
+                  <a href="tel:+917898977017" className="flex items-center gap-3 text-white/50 hover:text-emerald-400 transition-colors group">
                     <div className="w-9 h-9 rounded-lg bg-white/5 flex items-center justify-center group-hover:bg-emerald-500/20 transition-colors">
                       <Phone className="w-4 h-4" />
                     </div>
                     <div>
-                      <span className="text-sm block">+91 7089935022</span>
+                      <span className="text-sm block">+91 7898977017</span>
                     </div>
                   </a>
                 </li>
