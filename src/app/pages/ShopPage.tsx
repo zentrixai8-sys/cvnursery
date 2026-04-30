@@ -50,23 +50,8 @@ export function ShopPage() {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
-      <div className="bg-gradient-to-br from-[var(--nature-green)] to-[var(--nature-green-light)] py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-center text-white"
-          >
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">Shop Plants</h1>
-            <p className="text-lg text-white/90">
-              Discover our wide collection of beautiful, healthy plants
-            </p>
-          </motion.div>
-        </div>
-      </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="w-full max-w-[1600px] mx-auto px-4 sm:px-8 lg:px-12 py-8">
         {/* Mobile Filter Toggle */}
         <div className="lg:hidden mb-6 flex items-center justify-between">
           <div className="text-muted-foreground">
@@ -190,7 +175,7 @@ export function ShopPage() {
             {filteredProducts.length > 0 ? (
               <motion.div
                 layout
-                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
               >
                 {filteredProducts.map((product) => (
                   <ProductCard key={product.id} product={product} />

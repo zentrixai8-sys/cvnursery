@@ -96,62 +96,46 @@ export function ProductCard({ product }: ProductCardProps) {
             </motion.div>
           </div>
 
-          {/* Product Info */}
-          <div className="p-4">
-            <div className="mb-2">
-              <span className="text-xs text-muted-foreground font-medium uppercase tracking-wide">
+          {/* Product Info (Premium Layout) */}
+          <div className="p-5">
+            {/* Category & Rating */}
+            <div className="flex justify-between items-center mb-2">
+              <span className="text-[9px] font-black uppercase tracking-[0.2em] text-emerald-600/70">
                 {product.category}
               </span>
+              <div className="flex items-center gap-1">
+                 <Star className="w-3 h-3 fill-amber-400 text-amber-400" />
+                 <span className="text-[10px] font-bold text-slate-400">{product.rating} ({product.reviews})</span>
+              </div>
             </div>
 
-            <h3 className="text-lg font-bold mb-2 text-foreground group-hover:text-primary transition-colors line-clamp-1">
+            <h3 className="text-lg font-black tracking-tight mb-4 text-slate-900 group-hover:text-emerald-600 transition-colors line-clamp-1">
               {product.name}
             </h3>
 
-            {/* Rating */}
-            <div className="flex items-center gap-1 mb-3">
-              <div className="flex items-center">
-                {[...Array(5)].map((_, i) => (
-                  <Star
-                    key={i}
-                    className={`w-4 h-4 ${
-                      i < Math.floor(product.rating)
-                        ? 'fill-amber-400 text-amber-400'
-                        : 'text-gray-300'
-                    }`}
-                  />
-                ))}
-              </div>
-              <span className="text-sm text-muted-foreground">
-                ({product.reviews})
-              </span>
-            </div>
-
-            {/* Price */}
-            <div className="flex items-center justify-between mb-4">
-              <div className="flex items-center gap-2">
-                <span className="text-2xl font-bold text-primary">
-                  ₹{product.price}
-                </span>
+            {/* Price & Action */}
+            <div className="flex items-center justify-between pt-4 border-t border-slate-100">
+              <div className="flex flex-col">
                 {product.originalPrice && (
-                  <span className="text-sm text-muted-foreground line-through">
+                  <span className="text-[10px] font-bold text-slate-400 line-through mb-[-4px]">
                     ₹{product.originalPrice}
                   </span>
                 )}
+                <span className="text-2xl font-black text-slate-900 tracking-tighter">
+                  ₹{product.price}
+                </span>
               </div>
-            </div>
 
-            {/* Add to Cart Button */}
-            <motion.button
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              onClick={handleAddToCart}
-              disabled={!product.inStock}
-              className="w-full bg-primary text-primary-foreground py-3 rounded-xl font-medium hover:bg-primary/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
-            >
-              <ShoppingCart className="w-5 h-5" />
-              <span>{product.inStock ? 'Add to Cart' : 'Out of Stock'}</span>
-            </motion.button>
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={handleAddToCart}
+                disabled={!product.inStock}
+                className="w-12 h-12 bg-slate-50 text-slate-700 rounded-full flex items-center justify-center transition-all disabled:opacity-50 disabled:cursor-not-allowed hover:bg-emerald-600 hover:text-white hover:border-transparent border border-slate-200 shadow-sm"
+              >
+                <ShoppingCart className="w-5 h-5" />
+              </motion.button>
+            </div>
           </div>
         </div>
       </Link>

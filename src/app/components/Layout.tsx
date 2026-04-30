@@ -43,28 +43,33 @@ export function Layout() {
   return (
     <div className="min-h-screen flex flex-col">
       {/* Header */}
-      <header
-        className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-white/70 border-b border-emerald-100/50 shadow-[0_4px_30px_rgba(0,0,0,0.05)] transition-transform duration-500 ease-out"
-        style={{ transform: navbarVisible ? 'translateY(0)' : 'translateY(-100%)' }}
-      >
+      <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${navbarVisible ? 'bg-white/80 backdrop-blur-md shadow-sm' : 'bg-transparent'}`}>
+        {/* NEWS-STYLE OFFER TICKER (FULL WIDTH) */}
+        <div className="w-full bg-slate-900 text-white overflow-hidden flex items-center border-b border-slate-800">
+           <div className="bg-rose-600 text-white text-[10px] font-black uppercase tracking-[0.2em] px-6 py-2 z-20 whitespace-nowrap shadow-[10px_0_20px_rgba(15,23,42,1)] flex items-center gap-2 relative">
+              <div className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+              LIVE OFFERS
+           </div>
+           <div className="relative flex-1 overflow-hidden flex items-center z-10">
+              <motion.div
+                 animate={{ x: [0, -1500] }}
+                 transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
+                 className="flex items-center gap-16 whitespace-nowrap px-8 text-[11px] font-bold tracking-widest text-slate-300"
+              >
+                 {/* Offers Content */}
+                 <span className="flex items-center gap-2"><span className="text-rose-500">🔥</span> FLAT 50% OFF ON INDOOR PLANTS</span>
+                 <span className="flex items-center gap-2"><span className="text-emerald-400">🌿</span> BUY 2 GET 1 FREE ON ALL SUCCULENTS</span>
+                 <span className="flex items-center gap-2"><span className="text-blue-400">🚚</span> FREE DELIVERY ON ORDERS ABOVE ₹999</span>
+                 <span className="flex items-center gap-2"><span className="text-amber-400">✨</span> NEW ARRIVALS: RARE MONSTERA DELICIOSA</span>
+                 
+                 <span className="flex items-center gap-2"><span className="text-rose-500">🔥</span> FLAT 50% OFF ON INDOOR PLANTS</span>
+                 <span className="flex items-center gap-2"><span className="text-emerald-400">🌿</span> BUY 2 GET 1 FREE ON ALL SUCCULENTS</span>
+                 <span className="flex items-center gap-2"><span className="text-blue-400">🚚</span> FREE DELIVERY ON ORDERS ABOVE ₹999</span>
+                 <span className="flex items-center gap-2"><span className="text-amber-400">✨</span> NEW ARRIVALS: RARE MONSTERA DELICIOSA</span>
+              </motion.div>
+           </div>
+        </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Top Bar */}
-          <div className="border-b border-border/50 py-2 hidden md:flex items-center justify-between text-sm">
-            <div className="flex items-center gap-4 text-muted-foreground">
-              <a href="tel:+917089935022" className="flex items-center gap-2 hover:text-primary transition-colors">
-                <Phone className="w-4 h-4" />
-                <span>+91 7089935022</span>
-              </a>
-              <a href="mailto:demo@gmail.com" className="flex items-center gap-2 hover:text-primary transition-colors">
-                <Mail className="w-4 h-4" />
-                <span>demo@gmail.com</span>
-              </a>
-            </div>
-            <div className="text-muted-foreground">
-              Free delivery on orders above ₹999
-            </div>
-          </div>
-
           {/* Main Header */}
           <div className="flex items-center justify-between py-4">
             <Link to="/" className="flex items-center gap-2 group">
