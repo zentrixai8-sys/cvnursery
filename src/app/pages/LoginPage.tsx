@@ -208,6 +208,19 @@ export function LoginPage() {
         </motion.div>
       </div>
 
+      {/* Login Footer Links */}
+      <div className="absolute bottom-8 left-1/2 lg:left-[75%] -translate-x-1/2 flex gap-8 whitespace-nowrap z-20">
+        {[
+          { label: 'Privacy Policy', path: '/privacy-policy' },
+          { label: 'Terms & Policy', path: '/terms-and-policy' },
+          { label: 'Shipping Info', path: '/shipping-info' }
+        ].map((item) => (
+          <Link key={item.label} to={item.path} className="text-[9px] font-black uppercase tracking-[0.2em] text-slate-400 hover:text-emerald-600 transition-colors">
+            {item.label}
+          </Link>
+        ))}
+      </div>
+
     </div>
   );
 }

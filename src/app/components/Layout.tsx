@@ -36,6 +36,11 @@ export function Layout() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [isHome]);
 
+  // Scroll to top on route change
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+
   if (isAdmin) {
     return <Outlet />;
   }
@@ -357,8 +362,14 @@ export function Layout() {
           <div className="border-t border-white/5 mt-14 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="text-white/30 text-xs tracking-wide">&copy; 2026 CV Nursery. Crafted with 🌿 for plant lovers.</p>
             <div className="flex gap-6">
-              {['Privacy Policy', 'Terms of Service', 'Shipping Info'].map((item) => (
-                <a key={item} href="#" className="text-white/30 text-xs hover:text-emerald-400 transition-colors">{item}</a>
+              {[
+                { label: 'Privacy Policy', path: '/privacy-policy' },
+                { label: 'Terms & Policy', path: '/terms-and-policy' },
+                { label: 'Shipping Info', path: '/shipping-info' }
+              ].map((item) => (
+                <Link key={item.label} to={item.path} className="text-white/30 text-xs hover:text-emerald-400 transition-colors">
+                  {item.label}
+                </Link>
               ))}
             </div>
           </div>

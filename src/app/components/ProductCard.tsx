@@ -39,7 +39,17 @@ export function ProductCard({ product }: ProductCardProps) {
       className="group relative"
     >
       <Link to={`/product/${product.id}`}>
-        <div className="relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-[var(--glass-border)]">
+        <motion.div 
+          whileHover={{ 
+            rotateY: 5, 
+            rotateX: -2, 
+            scale: 1.02,
+            y: -10
+          }}
+          transition={{ type: "spring", stiffness: 400, damping: 25 }}
+          style={{ perspective: 1000 }}
+          className="relative bg-white rounded-3xl overflow-hidden shadow-[0_15px_35px_rgba(0,0,0,0.1)] hover:shadow-[0_40px_80px_rgba(0,0,0,0.15)] transition-all duration-500 border-2 border-slate-300 group/card"
+        >
           {/* Product Image */}
           <div className="relative aspect-square overflow-hidden bg-muted">
             <img
@@ -137,7 +147,7 @@ export function ProductCard({ product }: ProductCardProps) {
               </motion.button>
             </div>
           </div>
-        </div>
+        </motion.div>
       </Link>
     </motion.div>
   );

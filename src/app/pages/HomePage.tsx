@@ -330,7 +330,7 @@ export function HomePage() {
                 className="snap-center shrink-0 flex flex-col items-center gap-3 group cursor-pointer"
               >
                 <Link to="/shop" className="flex flex-col items-center gap-3">
-                  <div className="w-[130px] h-[130px] md:w-[160px] md:h-[160px] rounded-full overflow-hidden border-4 border-gray-100 group-hover:border-emerald-400 transition-all duration-300 shadow-lg group-hover:shadow-xl">
+                  <div className="w-[130px] h-[130px] md:w-[160px] md:h-[160px] rounded-full overflow-hidden border-4 border-slate-200 group-hover:border-emerald-400 transition-all duration-300 shadow-lg group-hover:shadow-xl">
                     <img src={item.image} alt={item.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" loading="lazy" />
                   </div>
                   <div className="text-center">
@@ -416,7 +416,7 @@ export function HomePage() {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         whileHover={{ y: -5 }}
-                        className="bg-white rounded-2xl border border-gray-100 shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden h-full"
+                        className="bg-white rounded-3xl border-2 border-slate-200 shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden h-full"
                       >
                         {/* Image + Badge */}
                         <div className="relative aspect-square bg-gray-50 p-4 flex items-center justify-center">
@@ -679,7 +679,7 @@ export function HomePage() {
                 whileHover={{ y: -6, transition: { duration: 0.3 } }}
                 className="group"
               >
-                <div className="bg-white rounded-2xl p-6 md:p-7 border border-gray-100/80 border-b-gray-200/60 shadow-[0_2px_4px_rgba(0,0,0,0.02),0_4px_12px_rgba(0,0,0,0.04),0_8px_32px_rgba(0,0,0,0.06)] group-hover:shadow-[0_4px_8px_rgba(16,185,129,0.06),0_8px_24px_rgba(16,185,129,0.1),0_20px_60px_rgba(16,185,129,0.15)] group-hover:border-emerald-200/60 transition-all duration-500 h-full relative overflow-hidden">
+                <div className="bg-white rounded-3xl p-6 md:p-7 border-2 border-slate-200 shadow-[0_2px_4px_rgba(0,0,0,0.02),0_4px_12px_rgba(0,0,0,0.04),0_8px_32px_rgba(0,0,0,0.06)] group-hover:shadow-[0_4px_8px_rgba(16,185,129,0.06),0_8px_24px_rgba(16,185,129,0.1),0_20px_60px_rgba(16,185,129,0.15)] group-hover:border-emerald-200/60 transition-all duration-500 h-full relative overflow-hidden">
                   <div className="absolute inset-x-0 bottom-0 h-[2px] bg-gradient-to-r from-transparent via-emerald-400/0 to-transparent group-hover:via-emerald-400/40 transition-all duration-500" />
                   <div className={`w-11 h-11 rounded-xl bg-gradient-to-br ${stat.gradient} flex items-center justify-center mb-4 shadow-md`}>
                     <stat.icon className="w-5 h-5 text-white" />

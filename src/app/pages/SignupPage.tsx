@@ -186,6 +186,20 @@ export function SignupPage() {
           </div>
         </div>
       </motion.div>
+
+      {/* Signup Footer Links */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-8 whitespace-nowrap z-20">
+        {[
+          { label: 'Privacy Policy', path: '/privacy-policy' },
+          { label: 'Terms & Policy', path: '/terms-and-policy' },
+          { label: 'Shipping Info', path: '/shipping-info' }
+        ].map((item) => (
+          <Link key={item.label} to={item.path} className="text-[9px] font-black uppercase tracking-[0.2em] text-white/40 hover:text-emerald-400 transition-colors">
+            {item.label}
+          </Link>
+        ))}
+      </div>
+
     </div>
   );
 }

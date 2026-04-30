@@ -44,7 +44,7 @@ export function ScrollCanvas({ frameCount, scrollProgress }: ScrollCanvasProps) 
 
   // Render to canvas
   useEffect(() => {
-    if (!loaded || !canvasRef.current) return;
+    if (!canvasRef.current) return;
 
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
@@ -122,28 +122,15 @@ export function ScrollCanvas({ frameCount, scrollProgress }: ScrollCanvasProps) 
       window.removeEventListener('resize', handleResize);
       if (animationFrameId) cancelAnimationFrame(animationFrameId);
     };
-  }, [loaded, images, scrollProgress, frameCount]);
+  }, [images, scrollProgress, frameCount]);
 
   return (
     <div className="sticky top-0 w-full h-screen flex items-center justify-center bg-[#EEF2EC] overflow-hidden z-0">
-      {!loaded && (
-        <div className="absolute inset-0 flex flex-col items-center justify-center z-10 gap-4">
-          <p className="font-medium text-emerald-800 tracking-wide text-lg">
-            Loading CV Nursery experience…
-          </p>
-          <div className="w-48 h-1 bg-emerald-100 rounded-full overflow-hidden">
-            <div
-              className="h-full bg-emerald-500 rounded-full transition-all duration-300"
-              style={{ width: `${loadProgress}%` }}
-            />
-          </div>
-          <p className="text-sm text-emerald-600/60">{loadProgress}%</p>
-        </div>
-      )}
+      {/* Loading overlay removed for instant access */}
       <canvas
         ref={canvasRef}
         className="w-full h-full pointer-events-none"
-        style={{ opacity: loaded ? 1 : 0, transition: 'opacity 0.5s ease-in-out' }}
+        style={{ opacity: 1 }}
       />
     </div>
   );

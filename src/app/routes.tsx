@@ -16,6 +16,9 @@ import { AdminCustomers } from './pages/admin/AdminCustomers';
 import { AdminInventory } from './pages/admin/AdminInventory';
 import { AdminPayments } from './pages/admin/AdminPayments';
 import { AdminOffers } from './pages/admin/AdminOffers';
+import { PrivacyPolicy } from './pages/PrivacyPolicy';
+import { TermsOfService } from './pages/TermsOfService';
+import { ShippingInfo } from './pages/ShippingInfo';
 import { NotFound } from './pages/NotFound';
 
 export const router = createBrowserRouter([
@@ -39,6 +42,9 @@ export const router = createBrowserRouter([
       { path: 'admin/inventory', Component: AdminInventory },
       { path: 'admin/payments', Component: AdminPayments },
       { path: 'admin/offers', Component: AdminOffers },
+      { path: 'privacy-policy', Component: PrivacyPolicy },
+      { path: 'terms-and-policy', Component: TermsOfService },
+      { path: 'shipping-info', Component: ShippingInfo },
       { path: '*', Component: NotFound },
     ],
   },
