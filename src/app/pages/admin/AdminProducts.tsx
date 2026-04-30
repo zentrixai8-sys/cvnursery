@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { motion } from 'motion/react';
-import { Link } from 'react-router';
-import { LayoutDashboard, Plus, Edit, Trash2, Search, X, Upload, Loader2, Tag } from 'lucide-react';
+import { Plus, Edit, Trash2, Search, X, Upload, Loader2, Tag, ArrowUpRight, MoreVertical, Package } from 'lucide-react';
 import { fetchProducts } from '../../data/products';
 import { useEffect } from 'react';
 import { Product } from '../../context/AppContext';
 import { supabase } from '../../../lib/supabase';
 import { toast } from 'sonner';
+import { AdminLayout } from '../../components/AdminLayout';
 
 export function AdminProducts() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -29,66 +29,37 @@ export function AdminProducts() {
   const handleAddProduct = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!newProduct.name || !newProduct.price || !imageFile) {
-      toast.error('Please fill all required fields and select an image');
+      toast.error('Please fill all required fields');
       return;
     }
-
     setIsUploading(true);
-
     try {
-      // 1. Upload Image to Supabase Storage 'products' bucket
       const fileExt = imageFile.name.split('.').pop();
       const fileName = `${Math.random().toString(36).substring(2)}.${fileExt}`;
       const filePath = `${fileName}`;
-
-      const { error: uploadError } = await supabase.storage
-        .from('products')
-        .upload(filePath, imageFile, {
-          cacheControl: '3600',
-          upsert: false
-        });
-
-      if (uploadError) {
-        throw new Error(`Image Upload Failed: ${uploadError.message}. Make sure the 'products' storage bucket exists and is public.`);
-      }
-
-      // 2. Get Public URL
-      const { data: { publicUrl } } = supabase.storage
-        .from('products')
-        .getPublicUrl(filePath);
-
-      // 3. Save to database
-      const priceNum = parseFloat(newProduct.price);
+      const { error: uploadError } = await supabase.storage.from('products').upload(filePath, imageFile);
+      if (uploadError) throw uploadError;
+      const { data: { publicUrl } } = supabase.storage.from('products').getPublicUrl(filePath);
       const newId = newProduct.name.toLowerCase().replace(/[^a-z0-9]+/g, '-') + '-' + Date.now().toString().slice(-4);
-      const discountNum = isOffer && discountPercent ? parseInt(discountPercent, 10) : 0;
-
       const productData = {
         id: newId,
         name: newProduct.name,
-        price: priceNum,
+        price: parseFloat(newProduct.price),
         category: newProduct.category,
         image: publicUrl,
-        discount: discountNum,
+        discount: isOffer && discountPercent ? parseInt(discountPercent, 10) : 0,
         rating: 5.0,
         reviews: 0,
-        description: 'A beautiful plant for your space.',
-        care_guide: 'Water moderately and keep in bright indirect light.',
+        description: 'Premium nursery plant.',
         in_stock: true,
       };
-
       const { error: dbError } = await supabase.from('products').insert(productData);
-
       if (dbError) throw dbError;
-
-      toast.success('Product and image uploaded successfully!');
+      toast.success('Product uploaded!');
       setIsModalOpen(false);
       setNewProduct({ name: '', price: '', category: 'Indoor Plants' });
       setImageFile(null);
-      setIsOffer(false);
-      setDiscountPercent('');
-      
       fetchProducts().then(setProducts);
-
     } catch (error: any) {
       toast.error(error.message);
     } finally {
@@ -96,333 +67,177 @@ export function AdminProducts() {
     }
   };
 
-  const filteredProducts = products.filter((product) =>
-    product.name.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  const filteredProducts = products.filter((p) => p.name.toLowerCase().includes(searchQuery.toLowerCase()));
 
   return (
-    <div className="min-h-screen bg-background">
-      {/* Admin Header */}
-      <header className="bg-white border-b border-border shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-gradient-to-br from-[var(--nature-green)] to-[var(--nature-green-light)] rounded-lg flex items-center justify-center">
-                <LayoutDashboard className="w-6 h-6 text-white" />
-              </div>
-              <div>
-                <h1 className="text-2xl font-bold">Product Management</h1>
-                <p className="text-sm text-muted-foreground">Manage your products</p>
-              </div>
-            </div>
-            <Link to="/" className="px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors">
-              Back to Site
-            </Link>
+    <AdminLayout title="Products">
+      <div className="space-y-10">
+        
+        {/* Header Section */}
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div>
+            <h1 className="text-3xl font-medium tracking-tight text-[#1A1A1A]">Collection</h1>
+            <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mt-1">Manage your botanical assets</p>
           </div>
-        </div>
-      </header>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Navigation */}
-        <div className="flex gap-4 mb-8 overflow-x-auto pb-2">
-          <Link to="/admin">
-            <motion.div
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="px-6 py-3 bg-white border border-border rounded-lg hover:bg-muted transition-colors whitespace-nowrap"
-            >
-              Dashboard
-            </motion.div>
-          </Link>
-          <Link to="/admin/products">
-            <motion.div
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="px-6 py-3 bg-primary text-primary-foreground rounded-lg whitespace-nowrap"
-            >
-              Products
-            </motion.div>
-          </Link>
-          <Link to="/admin/orders">
-            <motion.div
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="px-6 py-3 bg-white border border-border rounded-lg hover:bg-muted transition-colors whitespace-nowrap"
-            >
-              Orders
-            </motion.div>
-          </Link>
-          <Link to="/admin/billing">
-            <motion.div
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="px-6 py-3 bg-white border border-border rounded-lg hover:bg-muted transition-colors whitespace-nowrap"
-            >
-              Billing POS
-            </motion.div>
-          </Link>
-          <Link to="/admin/customers">
-            <motion.div
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="px-6 py-3 bg-white border border-border rounded-lg hover:bg-muted transition-colors whitespace-nowrap"
-            >
-              Customers
-            </motion.div>
-          </Link>
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => setIsModalOpen(true)}
+            className="px-6 py-3 bg-[#1A1A1A] text-white rounded-2xl font-bold text-[10px] uppercase tracking-widest shadow-lg flex items-center gap-2"
+          >
+            <Plus className="w-4 h-4" />
+            <span>Add New Product</span>
+          </motion.button>
         </div>
 
-        {/* Actions */}
-        <div className="flex flex-col sm:flex-row gap-4 mb-6">
-          <div className="flex-1 relative">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+        {/* Search Bento */}
+        <div className="bg-white rounded-2xl p-2 shadow-sm border border-white/60">
+          <div className="relative">
+            <Search className="absolute left-5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search products..."
-              className="w-full pl-12 pr-4 py-3 bg-white border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary"
+              placeholder="Search assets..."
+              className="w-full pl-12 pr-4 py-3 bg-slate-50/50 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 font-medium text-sm"
             />
           </div>
-          <motion.button
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            onClick={() => setIsModalOpen(true)}
-            className="px-6 py-3 bg-primary text-primary-foreground rounded-xl hover:bg-primary/90 transition-colors flex items-center gap-2 whitespace-nowrap"
-          >
-            <Plus className="w-5 h-5" />
-            <span>Add Product</span>
-          </motion.button>
         </div>
 
-        {/* Products Table */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="bg-white rounded-2xl shadow-lg overflow-hidden"
-        >
-          <div className="overflow-x-auto">
-            <table className="w-full">
-              <thead className="bg-muted/50">
-                <tr>
-                  <th className="text-left py-4 px-6 font-medium">Product</th>
-                  <th className="text-left py-4 px-6 font-medium">Category</th>
-                  <th className="text-left py-4 px-6 font-medium">Price</th>
-                  <th className="text-left py-4 px-6 font-medium">Stock</th>
-                  <th className="text-left py-4 px-6 font-medium">Rating</th>
-                  <th className="text-left py-4 px-6 font-medium">Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                {filteredProducts.map((product) => (
-                  <tr key={product.id} className="border-t border-border hover:bg-muted/30 transition-colors">
-                    <td className="py-4 px-6">
-                      <div className="flex items-center gap-3">
-                        <img
-                          src={product.image}
-                          alt={product.name}
-                          className="w-12 h-12 rounded-lg object-cover"
-                        />
-                        <div>
-                          <p className="font-medium">{product.name}</p>
-                          <p className="text-sm text-muted-foreground">{product.reviews} reviews</p>
-                        </div>
-                      </div>
-                    </td>
-                    <td className="py-4 px-6">
-                      <span className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">
-                        {product.category}
-                      </span>
-                    </td>
-                    <td className="py-4 px-6 font-bold">₹{product.price}</td>
-                    <td className="py-4 px-6">
-                      <span className={`px-3 py-1 rounded-full text-sm font-medium ${
-                        product.inStock ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
-                      }`}>
-                        {product.inStock ? 'In Stock' : 'Out of Stock'}
-                      </span>
-                    </td>
-                    <td className="py-4 px-6">
-                      <div className="flex items-center gap-1">
-                        <span className="font-medium">{product.rating}</span>
-                        <span className="text-amber-400">★</span>
-                      </div>
-                    </td>
-                    <td className="py-4 px-6">
-                      <div className="flex items-center gap-2">
-                        <motion.button
-                          whileHover={{ scale: 1.1 }}
-                          whileTap={{ scale: 0.9 }}
-                          className="p-2 hover:bg-primary/10 text-primary rounded-lg transition-colors"
-                        >
-                          <Edit className="w-5 h-5" />
-                        </motion.button>
-                        <motion.button
-                          whileHover={{ scale: 1.1 }}
-                          whileTap={{ scale: 0.9 }}
-                          className="p-2 hover:bg-destructive/10 text-destructive rounded-lg transition-colors"
-                        >
-                          <Trash2 className="w-5 h-5" />
-                        </motion.button>
-                      </div>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </motion.div>
-      </div>
-
-      {/* Add Product Modal */}
-      {isModalOpen && (
-        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="bg-white rounded-2xl shadow-xl w-full max-w-md overflow-hidden"
-          >
-            <div className="flex items-center justify-between p-6 border-b border-border">
-               <h2 className="text-xl font-bold">Add New Product</h2>
-              <button
-                onClick={() => setIsModalOpen(false)}
-                className="p-2 hover:bg-muted rounded-full transition-colors"
-                type="button"
-                disabled={isUploading}
-              >
-                <X className="w-5 h-5" />
-              </button>
-            </div>
-            
-            <form onSubmit={handleAddProduct} className="p-6 space-y-4">
-              <div>
-                <label className="block text-sm font-medium mb-1">Product Name *</label>
-                <input
-                  type="text"
-                  required
-                  value={newProduct.name}
-                  onChange={(e) => setNewProduct({ ...newProduct, name: e.target.value })}
-                  className="w-full px-4 py-2 bg-muted border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary"
-                  placeholder="e.g. Monstera Deliciosa"
+        {/* Products Bento Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
+          {filteredProducts.map((product) => (
+            <motion.div
+              key={product.id}
+              layout
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="bg-white rounded-3xl overflow-hidden shadow-sm border border-white/60 group hover:shadow-xl transition-all flex flex-col"
+            >
+              <div className="h-48 relative overflow-hidden">
+                <img 
+                  src={product.image} 
+                  alt={product.name} 
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.src = 'https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?q=80&w=2000';
+                  }}
                 />
-              </div>
-              
-              <div>
-                <label className="block text-sm font-medium mb-1">Price (₹) *</label>
-                <input
-                  type="number"
-                  required
-                  value={newProduct.price}
-                  onChange={(e) => setNewProduct({ ...newProduct, price: e.target.value })}
-                  className="w-full px-4 py-2 bg-muted border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary"
-                  placeholder="e.g. 599"
-                />
-              </div>
-
-               <div>
-                <label className="block text-sm font-medium mb-1">Category</label>
-                <select
-                  value={newProduct.category}
-                  onChange={(e) => setNewProduct({ ...newProduct, category: e.target.value })}
-                  className="w-full px-4 py-2 bg-muted border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary"
-                >
-                  <option value="Indoor Plants">Indoor Plants</option>
-                  <option value="Outdoor Plants">Outdoor Plants</option>
-                  <option value="Flower Plants">Flower Plants</option>
-                  <option value="Pots">Pots & Accessories</option>
-                </select>
-              </div>
-
-              {/* Special Offers Section */}
-              <div className="p-4 bg-emerald-50 border border-emerald-100 rounded-xl space-y-4">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2 text-emerald-800 font-medium">
-                    <Tag className="w-4 h-4" />
-                    <label>Special Offer?</label>
-                  </div>
-                  <label className="relative inline-flex items-center cursor-pointer">
-                    <input 
-                      type="checkbox" 
-                      className="sr-only peer" 
-                      checked={isOffer}
-                      onChange={(e) => setIsOffer(e.target.checked)}
-                    />
-                    <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-emerald-500"></div>
-                  </label>
+                <div className="absolute top-4 right-4 flex flex-col gap-1.5">
+                   <button className="w-8 h-8 bg-white/80 backdrop-blur-md rounded-lg flex items-center justify-center shadow-md hover:bg-white transition-colors">
+                     <Edit className="w-3.5 h-3.5 text-slate-600" />
+                   </button>
+                   <button className="w-8 h-8 bg-white/80 backdrop-blur-md rounded-lg flex items-center justify-center shadow-md hover:bg-rose-50 hover:text-rose-600 transition-colors">
+                     <Trash2 className="w-3.5 h-3.5" />
+                   </button>
                 </div>
-                
-                {isOffer && (
-                  <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }}>
-                    <label className="block text-sm font-medium mb-1 text-emerald-800">Discount Percentage (%)</label>
-                    <input
-                      type="number"
-                      required={isOffer}
-                      value={discountPercent}
-                      onChange={(e) => setDiscountPercent(e.target.value)}
-                      className="w-full px-4 py-2 bg-white border border-emerald-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500"
-                      placeholder="e.g. 20"
-                      min="1"
-                      max="99"
-                    />
-                  </motion.div>
+                {product.discount > 0 && (
+                  <div className="absolute bottom-4 left-4 px-3 py-1 bg-red-500 text-white rounded-md text-[8px] font-black uppercase tracking-widest">
+                    {product.discount}% OFF
+                  </div>
                 )}
               </div>
-
-              <div>
-                <label className="block text-sm font-medium mb-1">Upload Product Image *</label>
-                <div className="relative border-2 border-dashed border-border rounded-xl p-6 flex flex-col items-center justify-center hover:bg-muted/50 transition-colors cursor-pointer group bg-muted/20">
-                  <input
-                    type="file"
-                    accept="image/*"
-                    required
-                    onChange={(e) => e.target.files && setImageFile(e.target.files[0])}
-                    className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-                  />
-                  {imageFile ? (
-                    <div className="text-center">
-                      <p className="font-medium text-primary line-clamp-1">{imageFile.name}</p>
-                      <p className="text-xs text-muted-foreground mt-1">{(imageFile.size / 1024 / 1024).toFixed(2)} MB</p>
+              <div className="p-5 space-y-3">
+                <div className="flex justify-between items-start">
+                  <div>
+                    <h3 className="text-base font-bold text-slate-900 leading-tight">{product.name}</h3>
+                    <p className="text-[8px] font-black text-slate-400 uppercase tracking-widest mt-0.5">{product.category}</p>
+                  </div>
+                </div>
+                <div className="flex items-center justify-between pt-4 border-t border-slate-50">
+                  <div className="flex flex-col">
+                    <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Price</span>
+                    <span className="text-2xl font-bold tracking-tighter">₹{product.price}</span>
+                  </div>
+                  <div className="flex flex-col items-end">
+                    <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">In Stock</span>
+                    <div className="flex items-center gap-1 mt-1">
+                      <div className={`w-2 h-2 rounded-full ${product.inStock ? 'bg-emerald-400' : 'bg-rose-400'}`} />
+                      <span className="text-xs font-bold">{product.inStock ? 'Active' : 'Out'}</span>
                     </div>
-                  ) : (
-                    <>
-                      <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
-                        <Upload className="w-5 h-5 text-primary" />
-                      </div>
-                      <p className="text-sm font-medium">Click to upload image</p>
-                      <p className="text-xs text-muted-foreground mt-1">PNG, JPG, WEBP up to 5MB</p>
-                    </>
-                  )}
+                  </div>
                 </div>
               </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
 
-              <div className="pt-4 flex justify-end gap-3">
-                <button
-                  type="button"
-                  onClick={() => setIsModalOpen(false)}
-                  className="px-4 py-2 text-muted-foreground hover:bg-muted rounded-lg transition-colors"
-                  disabled={isUploading}
-                >
-                  Cancel
-                </button>
-                <button
-                  type="submit"
-                  disabled={isUploading}
-                  className="px-6 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors flex items-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
-                >
-                  {isUploading ? (
-                    <>
-                      <Loader2 className="w-4 h-4 animate-spin" />
-                      <span>Uploading...</span>
-                    </>
-                  ) : (
-                    <span>Save Product</span>
-                  )}
-                </button>
-              </div>
-            </form>
-          </motion.div>
+      {/* Modern Modal Overhaul */}
+      {isModalOpen && (
+        <div className="fixed inset-0 bg-[#1A1A1A]/40 backdrop-blur-xl z-[100] flex items-center justify-center p-4">
+           <motion.div
+             initial={{ opacity: 0, y: 100, scale: 0.9 }}
+             animate={{ opacity: 1, y: 0, scale: 1 }}
+             className="bg-[#F7F5E4] w-full max-w-xl rounded-[3.5rem] shadow-2xl p-12 relative overflow-hidden"
+           >
+             <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-400/10 rounded-full -mr-32 -mt-32 blur-3xl" />
+             
+             <div className="flex justify-between items-center mb-10 relative z-10">
+               <div>
+                 <h2 className="text-4xl font-bold tracking-tight">New Addition</h2>
+                 <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mt-1">Add to CV Nursery collection</p>
+               </div>
+               <button onClick={() => setIsModalOpen(false)} className="w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-lg border border-slate-100">
+                 <X className="w-6 h-6 text-slate-400" />
+               </button>
+             </div>
+
+             <form onSubmit={handleAddProduct} className="space-y-8 relative z-10">
+               <div className="space-y-6">
+                 <div className="grid grid-cols-2 gap-6">
+                   <div className="space-y-2">
+                     <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Name</label>
+                     <input type="text" required value={newProduct.name} onChange={e => setNewProduct({...newProduct, name: e.target.value})} className="w-full px-6 py-4 bg-white border border-slate-100 rounded-2xl focus:outline-none focus:ring-2 focus:ring-emerald-500 font-bold" />
+                   </div>
+                   <div className="space-y-2">
+                     <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Price</label>
+                     <input type="number" required value={newProduct.price} onChange={e => setNewProduct({...newProduct, price: e.target.value})} className="w-full px-6 py-4 bg-white border border-slate-100 rounded-2xl focus:outline-none focus:ring-2 focus:ring-emerald-500 font-bold" />
+                   </div>
+                 </div>
+
+                 <div className="space-y-2">
+                   <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Category</label>
+                   <select value={newProduct.category} onChange={e => setNewProduct({...newProduct, category: e.target.value})} className="w-full px-6 py-4 bg-white border border-slate-100 rounded-2xl focus:outline-none focus:ring-2 focus:ring-emerald-500 font-bold appearance-none">
+                     <option>Indoor Plants</option>
+                     <option>Outdoor Plants</option>
+                     <option>Flower Plants</option>
+                     <option>Pots</option>
+                   </select>
+                 </div>
+
+                 <div className="bg-white/50 p-6 rounded-[2rem] border border-white/60">
+                    <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4 block">Product Asset</label>
+                    <div className="relative border-2 border-dashed border-slate-200 rounded-[2rem] p-10 flex flex-col items-center justify-center bg-white group cursor-pointer overflow-hidden">
+                       <input type="file" required accept="image/*" onChange={e => e.target.files && setImageFile(e.target.files[0])} className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10" />
+                       {imageFile ? (
+                         <div className="text-center">
+                           <p className="text-emerald-600 font-bold">{imageFile.name}</p>
+                         </div>
+                       ) : (
+                         <>
+                           <div className="w-14 h-14 bg-slate-50 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                             <Upload className="w-6 h-6 text-slate-400" />
+                           </div>
+                           <p className="text-sm font-bold text-slate-700">Drag or click to upload</p>
+                         </>
+                       )}
+                    </div>
+                 </div>
+               </div>
+
+               <div className="flex gap-4">
+                 <button type="button" onClick={() => setIsModalOpen(false)} className="flex-1 py-5 font-bold text-slate-400 hover:text-slate-900 transition-colors uppercase tracking-widest text-xs">Discard</button>
+                 <button type="submit" disabled={isUploading} className="flex-[2] py-5 bg-[#1A1A1A] text-white rounded-full font-bold text-xs uppercase tracking-widest shadow-2xl flex items-center justify-center gap-3 disabled:opacity-50">
+                    {isUploading ? <Loader2 className="w-5 h-5 animate-spin" /> : <Package className="w-5 h-5" />}
+                    <span>Confirm Asset Addition</span>
+                 </button>
+               </div>
+             </form>
+           </motion.div>
         </div>
       )}
-    </div>
+    </AdminLayout>
   );
 }

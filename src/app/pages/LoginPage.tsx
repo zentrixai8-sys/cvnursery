@@ -1,13 +1,8 @@
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import { motion } from 'motion/react';
 import { Link, useNavigate } from 'react-router';
-import { Leaf, Mail, Lock, Eye, EyeOff } from 'lucide-react';
+import { Mail, Lock, Eye, EyeOff, ArrowRight } from 'lucide-react';
 import { useApp } from '../context/AppContext';
-
-import { ErrorBoundary } from '../components/ErrorBoundary';
-
-// Background removed for performance
-
 
 export function LoginPage() {
   const [email, setEmail] = useState('');
@@ -32,83 +27,108 @@ export function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 relative overflow-hidden bg-gray-50">
+    <div className="min-h-screen flex bg-white font-sans">
       
-      {/* Static Background instead of 3D Canvas */}
-      <div className="absolute inset-0 z-0 select-none overflow-hidden flex items-center justify-center opacity-30">
-         <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-emerald-300/40 rounded-full blur-[120px] mix-blend-multiply pointer-events-none" />
-         <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-teal-400/30 rounded-full blur-[100px] mix-blend-multiply pointer-events-none" />
+      {/* Left Panel - Image Background */}
+      <div className="hidden lg:flex lg:w-1/2 relative overflow-hidden">
+        <motion.img 
+          initial={{ scale: 1.1, filter: 'blur(10px)' }}
+          animate={{ scale: 1, filter: 'blur(0px)' }}
+          transition={{ duration: 1.5, ease: 'easeOut' }}
+          src="https://images.unsplash.com/photo-1604762524889-3e2fcc145683?q=80&w=2000&auto=format&fit=crop" 
+          alt="Luxury indoor plants" 
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-emerald-950/80 via-emerald-900/20 to-transparent" />
+        
+        {/* Branding on Image */}
+        <div className="absolute bottom-12 left-12 text-white z-10 max-w-md">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5, duration: 0.8 }}
+          >
+            <h1 className="text-4xl font-black mb-4 font-display">Cultivating Elegance</h1>
+            <p className="text-white/80 text-lg leading-relaxed">
+              Experience the finest collection of premium botanicals, curated specifically for luxury living spaces.
+            </p>
+          </motion.div>
+        </div>
       </div>
 
-      <div className="absolute inset-0 z-0 bg-gradient-to-br from-white/30 via-emerald-50/20 to-teal-50/20 mix-blend-overlay pointer-events-none" />
+      {/* Right Panel - Form */}
+      <div className="w-full lg:w-1/2 flex items-center justify-center p-6 sm:p-12 relative bg-gray-50/50">
+        
+        {/* Mobile Background (Hidden on Desktop) */}
+        <div className="absolute inset-0 z-0 lg:hidden overflow-hidden">
+          <img 
+            src="https://images.unsplash.com/photo-1604762524889-3e2fcc145683?q=80&w=800&auto=format&fit=crop" 
+            alt="Plants" 
+            className="w-full h-full object-cover opacity-20"
+          />
+          <div className="absolute inset-0 bg-white/80 backdrop-blur-3xl" />
+        </div>
 
-      {/* Login Form Container */}
-      <motion.div
-        initial={{ opacity: 0, y: 40, scale: 0.98 }}
-        animate={{ opacity: 1, y: 0, scale: 1 }}
-        transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-        className="relative z-10 w-full max-w-lg"
-      >
-        <div className="rounded-[2.5rem] bg-white/70 backdrop-blur-2xl shadow-[0_8px_32px_rgba(0,0,0,0.1)] border border-white/50 p-10 mt-16 sm:p-12 overflow-hidden relative">
-          
-          {/* Decorative Corner Orbs inside card */}
-          <div className="absolute -top-16 -right-16 w-32 h-32 bg-emerald-300/30 rounded-full blur-2xl" />
-          <div className="absolute -bottom-16 -left-16 w-32 h-32 bg-teal-300/30 rounded-full blur-2xl" />
-
+        <motion.div
+          initial={{ opacity: 0, x: 40 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+          className="relative z-10 w-full max-w-md"
+        >
           {/* Logo */}
-          <div className="text-center mb-10 relative z-10">
-            <motion.div
-              whileHover={{ rotate: 180 }}
-              transition={{ duration: 0.5 }}
-              className="w-20 h-20 bg-gradient-to-br from-emerald-500 to-green-600 shadow-[0_0_20px_rgba(16,185,129,0.3)] rounded-full flex items-center justify-center mx-auto mb-6"
-            >
-              <Leaf className="w-10 h-10 text-white" />
-            </motion.div>
-            <h2 className="text-4xl font-black text-gray-900 tracking-tight">Welcome Back</h2>
-            <p className="text-gray-500 mt-3 font-medium text-lg">Sign in to your CV Nursery account</p>
+          <div className="mb-10 text-center lg:text-left">
+            <Link to="/" className="inline-block mb-8">
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                className="w-16 h-16 rounded-2xl overflow-hidden shadow-lg shadow-emerald-500/20 mx-auto lg:mx-0"
+              >
+                <img src="https://i.ibb.co/PvL2jHzk/CV-Nursery-logo-design.png" alt="CV Nursery" className="w-full h-full object-cover" />
+              </motion.div>
+            </Link>
+            <h2 className="text-3xl font-black text-gray-900 tracking-tight font-display">Welcome Back</h2>
+            <p className="text-gray-500 mt-2 text-sm">Please enter your details to sign in.</p>
           </div>
 
           {/* Form */}
-          <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
+          <form onSubmit={handleSubmit} className="space-y-5">
             <div>
-              <label htmlFor="email" className="block text-sm font-bold text-gray-700 mb-2 ml-2">
+              <label htmlFor="email" className="block text-xs font-bold text-gray-700 uppercase tracking-widest mb-2">
                 Email Address
               </label>
               <div className="relative group">
-                <Mail className="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within:text-emerald-500 transition-colors" />
+                <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within:text-emerald-600 transition-colors" />
                 <input
                   id="email"
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
-                  placeholder="your@email.com"
-                  className="w-full pl-14 pr-5 py-4 bg-white/60 backdrop-blur-md border border-gray-200/50 rounded-2xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white transition-all text-gray-800 placeholder:text-gray-400/80 shadow-sm"
+                  placeholder="name@example.com"
+                  className="w-full pl-12 pr-4 py-4 bg-white border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition-all text-gray-800 placeholder:text-gray-400 shadow-sm"
                 />
               </div>
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-sm font-bold text-gray-700 mb-2 ml-2">
+              <label htmlFor="password" className="block text-xs font-bold text-gray-700 uppercase tracking-widest mb-2">
                 Password
               </label>
               <div className="relative group">
-                <Lock className="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within:text-emerald-500 transition-colors" />
+                <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within:text-emerald-600 transition-colors" />
                 <input
                   id="password"
                   type={showPassword ? 'text' : 'password'}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
-                  placeholder="Enter your password"
-                  className="w-full pl-14 pr-14 py-4 bg-white/60 backdrop-blur-md border border-gray-200/50 rounded-2xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white transition-all text-gray-800 placeholder:text-gray-400/80 shadow-sm"
+                  placeholder="••••••••"
+                  className="w-full pl-12 pr-12 py-4 bg-white border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition-all text-gray-800 placeholder:text-gray-400 shadow-sm"
                 />
                 
-                {/* Password Visibility Toggle */}
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-5 top-1/2 -translate-y-1/2 text-gray-400 hover:text-emerald-600 transition-colors focus:outline-none"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-emerald-600 transition-colors focus:outline-none"
                   aria-label={showPassword ? 'Hide password' : 'Show password'}
                 >
                   {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
@@ -116,45 +136,52 @@ export function LoginPage() {
               </div>
             </div>
 
-            <div className="flex items-center justify-between px-2">
+            <div className="flex items-center justify-between pt-2 pb-4">
               <label className="flex items-center gap-2 cursor-pointer group">
-                <input type="checkbox" className="w-4 h-4 rounded border-gray-300 text-emerald-600 focus:ring-emerald-500" />
+                <div className="relative flex items-center justify-center">
+                  <input type="checkbox" className="peer appearance-none w-5 h-5 border-2 border-gray-300 rounded-md checked:bg-emerald-600 checked:border-emerald-600 transition-all cursor-pointer" />
+                  <div className="absolute text-white opacity-0 peer-checked:opacity-100 pointer-events-none transition-opacity">
+                    <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="3"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"></path></svg>
+                  </div>
+                </div>
                 <span className="text-sm text-gray-600 font-medium group-hover:text-gray-900 transition-colors">Remember me</span>
               </label>
-              <a href="#" className="text-sm text-emerald-600 font-bold hover:text-emerald-700 hover:underline transition-all">
+              <a href="#" className="text-sm text-emerald-600 font-bold hover:text-emerald-700 transition-colors">
                 Forgot password?
               </a>
             </div>
 
             <motion.button
-              whileHover={{ scale: 1.02, boxShadow: '0 10px 25px rgba(16,185,129,0.3)' }}
-              whileTap={{ scale: 0.98 }}
+              whileHover={{ scale: 1.01, y: -2 }}
+              whileTap={{ scale: 0.99 }}
               type="submit"
               disabled={isLoading}
-              className="w-full bg-gradient-to-r from-emerald-500 to-green-600 text-white py-5 rounded-2xl font-bold text-lg transition-all shadow-lg disabled:opacity-70 disabled:cursor-not-allowed mt-4 flex items-center justify-center gap-2"
+              className="w-full bg-gray-900 text-white py-4 rounded-xl font-bold text-sm hover:bg-emerald-700 transition-colors shadow-[0_8px_20px_rgba(0,0,0,0.1)] hover:shadow-[0_8px_25px_rgba(16,185,129,0.25)] disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2 group"
             >
               {isLoading ? (
                 <>
-                  <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                  <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                   <span>Authenticating...</span>
                 </>
               ) : (
-                'Secure Sign In'
+                <>
+                  Sign In <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </>
               )}
             </motion.button>
           </form>
 
           {/* Sign Up Link */}
-          <div className="mt-8 text-center relative z-10 border-t border-gray-200/50 pt-8">
-            <p className="text-gray-600 font-medium">
+          <div className="mt-10 text-center lg:text-left">
+            <p className="text-gray-500 text-sm">
               Don't have an account?{' '}
-              <Link to="/signup" className="text-emerald-600 hover:text-emerald-700 font-bold hover:underline transition-all">
+              <Link to="/signup" className="text-emerald-600 hover:text-emerald-700 font-bold hover:underline transition-colors">
                 Create Account
               </Link>
             </p>
           </div>
-        </div>
-      </motion.div>
+        </motion.div>
+      </div>
     </div>
   );
 }

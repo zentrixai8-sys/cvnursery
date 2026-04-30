@@ -1,6 +1,6 @@
 import { Outlet, Link, useLocation } from 'react-router';
 import { motion, AnimatePresence } from 'motion/react';
-import { ShoppingCart, Heart, User, Menu, X, Leaf, Search, Phone, Mail } from 'lucide-react';
+import { ShoppingCart, Heart, User, Menu, X, Leaf, Search, Phone, Mail, Instagram, Facebook, Twitter } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { useApp } from '../context/AppContext';
 
@@ -44,7 +44,7 @@ export function Layout() {
     <div className="min-h-screen flex flex-col">
       {/* Header */}
       <header
-        className="fixed top-0 left-0 right-0 z-50 backdrop-blur-lg bg-white/80 border-b border-[var(--glass-border)] shadow-sm transition-transform duration-500 ease-out"
+        className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-white/70 border-b border-emerald-100/50 shadow-[0_4px_30px_rgba(0,0,0,0.05)] transition-transform duration-500 ease-out"
         style={{ transform: navbarVisible ? 'translateY(0)' : 'translateY(-100%)' }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -69,11 +69,11 @@ export function Layout() {
           <div className="flex items-center justify-between py-4">
             <Link to="/" className="flex items-center gap-2 group">
               <motion.div
-                whileHover={{ rotate: 360 }}
-                transition={{ duration: 0.5 }}
-                className="w-10 h-10 rounded-full bg-gradient-to-br from-[var(--nature-green)] to-[var(--nature-green-light)] flex items-center justify-center"
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.3 }}
+                className="w-10 h-10 rounded-full overflow-hidden"
               >
-                <Leaf className="w-6 h-6 text-white" />
+                <img src="https://i.ibb.co/PvL2jHzk/CV-Nursery-logo-design.png" alt="CV Nursery" className="w-full h-full object-cover" />
               </motion.div>
               <span className="text-2xl font-bold bg-gradient-to-r from-[var(--nature-green)] to-[var(--nature-green-light)] bg-clip-text text-transparent">
                 CV Nursery
@@ -254,70 +254,108 @@ export function Layout() {
         <Outlet />
       </main>
 
-      {/* Footer */}
-      <footer className="bg-[var(--nature-green)] text-white mt-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div>
-              <div className="flex items-center gap-2 mb-4">
-                <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
-                  <Leaf className="w-6 h-6" />
+      {/* Premium Footer */}
+      <footer className="bg-gradient-to-b from-emerald-950 to-gray-950 text-white relative overflow-hidden">
+        {/* Decorative top border */}
+        <div className="h-1 bg-gradient-to-r from-transparent via-emerald-500 to-transparent" />
+        
+        {/* Decorative blur orbs */}
+        <div className="absolute top-20 left-10 w-72 h-72 bg-emerald-600/5 rounded-full blur-[100px]" />
+        <div className="absolute bottom-10 right-10 w-96 h-96 bg-emerald-600/5 rounded-full blur-[100px]" />
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20 relative z-10">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-8">
+            {/* Brand Column */}
+            <div className="md:col-span-4">
+              <div className="flex items-center gap-3 mb-5">
+                <div className="w-11 h-11 rounded-full overflow-hidden shadow-lg shadow-emerald-500/20">
+                  <img src="https://i.ibb.co/PvL2jHzk/CV-Nursery-logo-design.png" alt="CV Nursery" className="w-full h-full object-cover" />
                 </div>
-                <span className="text-xl font-bold">CV Nursery</span>
+                <span className="text-2xl font-black tracking-tight">CV Nursery</span>
               </div>
-              <p className="text-white/80 mb-4">
-                Your trusted source for fresh, healthy plants delivered to your doorstep.
+              <p className="text-white/50 text-sm leading-relaxed mb-6 max-w-xs">
+                Bringing nature closer to you since 2016. Premium plants, curated with love and delivered with care to your doorstep.
               </p>
+              {/* Social Icons */}
+              <div className="flex gap-3">
+                <a href="https://www.instagram.com/cv_nursery?igsh=MTdjcXJ1c20wN3dhNg%3D%3D" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-gradient-to-br hover:from-purple-500 hover:to-pink-500 hover:border-pink-500 transition-all duration-300 group">
+                  <Instagram className="w-4 h-4 text-white/40 group-hover:text-white transition-colors" />
+                </a>
+                <a href="#" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-blue-600 hover:border-blue-600 transition-all duration-300 group">
+                  <Facebook className="w-4 h-4 text-white/40 group-hover:text-white transition-colors" />
+                </a>
+                <a href="#" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-sky-500 hover:border-sky-500 transition-all duration-300 group">
+                  <Twitter className="w-4 h-4 text-white/40 group-hover:text-white transition-colors" />
+                </a>
+              </div>
             </div>
 
-            <div>
-              <h3 className="font-bold mb-4">Quick Links</h3>
-              <ul className="space-y-2">
-                <li>
-                  <Link to="/shop" className="text-white/80 hover:text-white transition-colors">
-                    Shop
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/dashboard" className="text-white/80 hover:text-white transition-colors">
-                    My Account
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/cart" className="text-white/80 hover:text-white transition-colors">
-                    Cart
-                  </Link>
-                </li>
+            {/* Quick Links */}
+            <div className="md:col-span-2">
+              <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-emerald-400 mb-5">Quick Links</h3>
+              <ul className="space-y-3">
+                {[{ to: '/shop', label: 'Shop' }, { to: '/dashboard', label: 'My Account' }, { to: '/cart', label: 'Cart' }].map((link) => (
+                  <li key={link.to}>
+                    <Link to={link.to} className="text-white/50 hover:text-emerald-400 transition-colors text-sm flex items-center gap-2 group">
+                      <span className="w-1 h-1 rounded-full bg-emerald-600 group-hover:bg-emerald-400 transition-colors" />
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </div>
 
-            <div>
-              <h3 className="font-bold mb-4">Categories</h3>
-              <ul className="space-y-2">
-                <li className="text-white/80">Indoor Plants</li>
-                <li className="text-white/80">Outdoor Plants</li>
-                <li className="text-white/80">Flower Plants</li>
-                <li className="text-white/80">Pots & Accessories</li>
+            {/* Categories */}
+            <div className="md:col-span-3">
+              <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-emerald-400 mb-5">Categories</h3>
+              <ul className="space-y-3">
+                {['Indoor Plants', 'Outdoor Plants', 'Flower Plants', 'Seeds & Fertilizers', 'Pots & Planters'].map((cat) => (
+                  <li key={cat}>
+                    <Link to="/shop" className="text-white/50 hover:text-emerald-400 transition-colors text-sm flex items-center gap-2 group">
+                      <span className="w-1 h-1 rounded-full bg-emerald-600 group-hover:bg-emerald-400 transition-colors" />
+                      {cat}
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </div>
 
-            <div>
-              <h3 className="font-bold mb-4">Contact Us</h3>
-              <ul className="space-y-2">
-                <li className="flex items-center gap-2 text-white/80">
-                  <Phone className="w-4 h-4" />
-                  <span>+91 7089935022</span>
+            {/* Contact */}
+            <div className="md:col-span-3">
+              <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-emerald-400 mb-5">Get in Touch</h3>
+              <ul className="space-y-4">
+                <li>
+                  <a href="tel:+917089935022" className="flex items-center gap-3 text-white/50 hover:text-emerald-400 transition-colors group">
+                    <div className="w-9 h-9 rounded-lg bg-white/5 flex items-center justify-center group-hover:bg-emerald-500/20 transition-colors">
+                      <Phone className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <span className="text-sm block">+91 7089935022</span>
+                    </div>
+                  </a>
                 </li>
-                <li className="flex items-center gap-2 text-white/80">
-                  <Mail className="w-4 h-4" />
-                  <span>demo@gmail.com</span>
+                <li>
+                  <a href="mailto:demo@gmail.com" className="flex items-center gap-3 text-white/50 hover:text-emerald-400 transition-colors group">
+                    <div className="w-9 h-9 rounded-lg bg-white/5 flex items-center justify-center group-hover:bg-emerald-500/20 transition-colors">
+                      <Mail className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <span className="text-sm block">demo@gmail.com</span>
+                    </div>
+                  </a>
                 </li>
               </ul>
             </div>
           </div>
 
-          <div className="border-t border-white/20 mt-8 pt-8 text-center text-white/80">
-            <p>&copy; 2026 CV Nursery. All rights reserved.</p>
+          {/* Bottom Bar */}
+          <div className="border-t border-white/5 mt-14 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+            <p className="text-white/30 text-xs tracking-wide">&copy; 2026 CV Nursery. Crafted with 🌿 for plant lovers.</p>
+            <div className="flex gap-6">
+              {['Privacy Policy', 'Terms of Service', 'Shipping Info'].map((item) => (
+                <a key={item} href="#" className="text-white/30 text-xs hover:text-emerald-400 transition-colors">{item}</a>
+              ))}
+            </div>
           </div>
         </div>
       </footer>

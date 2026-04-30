@@ -13,6 +13,9 @@ import { AdminProducts } from './pages/admin/AdminProducts';
 import { AdminOrders } from './pages/admin/AdminOrders';
 import { AdminBilling } from './pages/admin/AdminBilling';
 import { AdminCustomers } from './pages/admin/AdminCustomers';
+import { AdminInventory } from './pages/admin/AdminInventory';
+import { AdminPayments } from './pages/admin/AdminPayments';
+import { AdminOffers } from './pages/admin/AdminOffers';
 import { NotFound } from './pages/NotFound';
 
 export const router = createBrowserRouter([
@@ -33,6 +36,9 @@ export const router = createBrowserRouter([
       { path: 'admin/orders', Component: AdminOrders },
       { path: 'admin/billing', Component: AdminBilling },
       { path: 'admin/customers', Component: AdminCustomers },
+      { path: 'admin/inventory', Component: AdminInventory },
+      { path: 'admin/payments', Component: AdminPayments },
+      { path: 'admin/offers', Component: AdminOffers },
       { path: '*', Component: NotFound },
     ],
   },
